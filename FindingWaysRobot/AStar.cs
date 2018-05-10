@@ -9,7 +9,7 @@ namespace FindingWaysRobot
 {
     class AStar
     {
-        //public static bool wayBuild=false;
+        public static bool robotGo=false;
         public int[,] AstarAlgoritm(int[,] map, int XStart, int YStart, int XFinish, int YFinish)
         {
             int matrixSize = map.GetLength(0) * map.GetLength(1); // размерность списка смежности

@@ -44,27 +44,12 @@
             this.labelPatency1 = new System.Windows.Forms.Label();
             this.textBoxMapName = new System.Windows.Forms.TextBox();
             this.RobotPosition = new System.Windows.Forms.ComboBox();
-            this.buttonSetRemoveFinish = new System.Windows.Forms.Button();
-            this.buttonInstallOrRemoveRobot = new System.Windows.Forms.Button();
-            this.buttonMapSelection = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
             this.LabelLines = new System.Windows.Forms.Label();
             this.LabelСolumns = new System.Windows.Forms.Label();
             this.numberOfLines = new System.Windows.Forms.NumericUpDown();
             this.numberOfСolumns = new System.Windows.Forms.NumericUpDown();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonGetDirections = new System.Windows.Forms.Button();
-            this.buttonLoadMapIntoRobot = new System.Windows.Forms.Button();
-            this.buttonDeleteMap = new System.Windows.Forms.Button();
-            this.buttonMapEdit = new System.Windows.Forms.Button();
-            this.buttonCreateMap = new System.Windows.Forms.Button();
-            this.buttonComPortRefresh = new System.Windows.Forms.Button();
-            this.buttonConnect = new System.Windows.Forms.Button();
-            this.buttonSendWayRobot = new System.Windows.Forms.Button();
-            this.buttonStartWay = new System.Windows.Forms.Button();
-            this.buttonStop = new System.Windows.Forms.Button();
-            this.buttonMapSelection2 = new System.Windows.Forms.Button();
             this.panelMapSelection = new System.Windows.Forms.Panel();
             this.labelMapSelect = new System.Windows.Forms.Label();
             this.SelectTable = new System.Windows.Forms.ComboBox();
@@ -73,6 +58,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ComPortNumber = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.buttonBreakConnection = new System.Windows.Forms.Button();
+            this.buttonMapSelection2 = new System.Windows.Forms.Button();
+            this.buttonStop = new System.Windows.Forms.Button();
+            this.buttonStartWay = new System.Windows.Forms.Button();
+            this.buttonSendWayRobot = new System.Windows.Forms.Button();
+            this.buttonConnect = new System.Windows.Forms.Button();
+            this.buttonGetDirections = new System.Windows.Forms.Button();
+            this.buttonComPortRefresh = new System.Windows.Forms.Button();
+            this.buttonLoadMapIntoRobot = new System.Windows.Forms.Button();
+            this.buttonDeleteMap = new System.Windows.Forms.Button();
+            this.buttonMapEdit = new System.Windows.Forms.Button();
+            this.buttonCreateMap = new System.Windows.Forms.Button();
+            this.buttonSetRemoveFinish = new System.Windows.Forms.Button();
+            this.buttonInstallOrRemoveRobot = new System.Windows.Forms.Button();
+            this.buttonMapSelection = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.panelCreateEditMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfLines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfСolumns)).BeginInit();
@@ -258,50 +259,6 @@
             this.RobotPosition.Size = new System.Drawing.Size(42, 22);
             this.RobotPosition.TabIndex = 8;
             // 
-            // buttonSetRemoveFinish
-            // 
-            this.buttonSetRemoveFinish.Image = global::FindingWaysRobot.Properties.Resources.finish;
-            this.buttonSetRemoveFinish.Location = new System.Drawing.Point(498, 9);
-            this.buttonSetRemoveFinish.Name = "buttonSetRemoveFinish";
-            this.buttonSetRemoveFinish.Size = new System.Drawing.Size(65, 70);
-            this.buttonSetRemoveFinish.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.buttonSetRemoveFinish, "Установить/убрать финишную точку");
-            this.buttonSetRemoveFinish.UseVisualStyleBackColor = true;
-            this.buttonSetRemoveFinish.Click += new System.EventHandler(this.buttonSetRemoveFinish_Click);
-            // 
-            // buttonInstallOrRemoveRobot
-            // 
-            this.buttonInstallOrRemoveRobot.Image = global::FindingWaysRobot.Properties.Resources.robot;
-            this.buttonInstallOrRemoveRobot.Location = new System.Drawing.Point(569, 9);
-            this.buttonInstallOrRemoveRobot.Name = "buttonInstallOrRemoveRobot";
-            this.buttonInstallOrRemoveRobot.Size = new System.Drawing.Size(65, 70);
-            this.buttonInstallOrRemoveRobot.TabIndex = 6;
-            this.toolTip1.SetToolTip(this.buttonInstallOrRemoveRobot, "Установить/убрать робота с карты");
-            this.buttonInstallOrRemoveRobot.UseVisualStyleBackColor = true;
-            this.buttonInstallOrRemoveRobot.Click += new System.EventHandler(this.buttonInstallOrRemoveRobot_Click);
-            // 
-            // buttonMapSelection
-            // 
-            this.buttonMapSelection.Image = ((System.Drawing.Image)(resources.GetObject("buttonMapSelection.Image")));
-            this.buttonMapSelection.Location = new System.Drawing.Point(711, 9);
-            this.buttonMapSelection.Name = "buttonMapSelection";
-            this.buttonMapSelection.Size = new System.Drawing.Size(65, 70);
-            this.buttonMapSelection.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.buttonMapSelection, "Перейти на панель выбора карт");
-            this.buttonMapSelection.UseVisualStyleBackColor = true;
-            this.buttonMapSelection.Click += new System.EventHandler(this.buttonMapSelection_Click);
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Image = ((System.Drawing.Image)(resources.GetObject("buttonSave.Image")));
-            this.buttonSave.Location = new System.Drawing.Point(640, 9);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(65, 70);
-            this.buttonSave.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.buttonSave, "Сохранить карту");
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            // 
             // LabelLines
             // 
             this.LabelLines.AutoSize = true;
@@ -379,124 +336,6 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
-            // buttonGetDirections
-            // 
-            this.buttonGetDirections.Image = global::FindingWaysRobot.Properties.Resources.destination;
-            this.buttonGetDirections.Location = new System.Drawing.Point(210, 15);
-            this.buttonGetDirections.Name = "buttonGetDirections";
-            this.buttonGetDirections.Size = new System.Drawing.Size(65, 70);
-            this.buttonGetDirections.TabIndex = 6;
-            this.toolTip1.SetToolTip(this.buttonGetDirections, "Проложить маршрут");
-            this.buttonGetDirections.UseVisualStyleBackColor = true;
-            this.buttonGetDirections.Click += new System.EventHandler(this.buttonGetDirections_Click);
-            // 
-            // buttonLoadMapIntoRobot
-            // 
-            this.buttonLoadMapIntoRobot.Image = global::FindingWaysRobot.Properties.Resources.robotConnect;
-            this.buttonLoadMapIntoRobot.Location = new System.Drawing.Point(408, 9);
-            this.buttonLoadMapIntoRobot.Name = "buttonLoadMapIntoRobot";
-            this.buttonLoadMapIntoRobot.Size = new System.Drawing.Size(65, 70);
-            this.buttonLoadMapIntoRobot.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.buttonLoadMapIntoRobot, "Перейти к загрузке карты в робота");
-            this.buttonLoadMapIntoRobot.UseVisualStyleBackColor = true;
-            // 
-            // buttonDeleteMap
-            // 
-            this.buttonDeleteMap.Image = global::FindingWaysRobot.Properties.Resources.delete;
-            this.buttonDeleteMap.Location = new System.Drawing.Point(337, 9);
-            this.buttonDeleteMap.Name = "buttonDeleteMap";
-            this.buttonDeleteMap.Size = new System.Drawing.Size(65, 70);
-            this.buttonDeleteMap.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.buttonDeleteMap, "Удалить карту");
-            this.buttonDeleteMap.UseVisualStyleBackColor = true;
-            this.buttonDeleteMap.Click += new System.EventHandler(this.buttonDeleteMap_Click);
-            // 
-            // buttonMapEdit
-            // 
-            this.buttonMapEdit.Image = global::FindingWaysRobot.Properties.Resources.edit;
-            this.buttonMapEdit.Location = new System.Drawing.Point(195, 9);
-            this.buttonMapEdit.Name = "buttonMapEdit";
-            this.buttonMapEdit.Size = new System.Drawing.Size(65, 70);
-            this.buttonMapEdit.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.buttonMapEdit, "Редактировать карту");
-            this.buttonMapEdit.UseVisualStyleBackColor = true;
-            this.buttonMapEdit.Click += new System.EventHandler(this.buttonMapEdit_Click);
-            // 
-            // buttonCreateMap
-            // 
-            this.buttonCreateMap.Image = ((System.Drawing.Image)(resources.GetObject("buttonCreateMap.Image")));
-            this.buttonCreateMap.Location = new System.Drawing.Point(266, 9);
-            this.buttonCreateMap.Name = "buttonCreateMap";
-            this.buttonCreateMap.Size = new System.Drawing.Size(65, 70);
-            this.buttonCreateMap.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.buttonCreateMap, "Создать новую карту");
-            this.buttonCreateMap.UseVisualStyleBackColor = true;
-            this.buttonCreateMap.Click += new System.EventHandler(this.buttonCreateMap_Click);
-            // 
-            // buttonComPortRefresh
-            // 
-            this.buttonComPortRefresh.Image = ((System.Drawing.Image)(resources.GetObject("buttonComPortRefresh.Image")));
-            this.buttonComPortRefresh.Location = new System.Drawing.Point(103, 38);
-            this.buttonComPortRefresh.Name = "buttonComPortRefresh";
-            this.buttonComPortRefresh.Size = new System.Drawing.Size(30, 30);
-            this.buttonComPortRefresh.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.buttonComPortRefresh, "Обновить");
-            this.buttonComPortRefresh.UseVisualStyleBackColor = true;
-            this.buttonComPortRefresh.Click += new System.EventHandler(this.buttonComPortRefresh_Click);
-            // 
-            // buttonConnect
-            // 
-            this.buttonConnect.Image = ((System.Drawing.Image)(resources.GetObject("buttonConnect.Image")));
-            this.buttonConnect.Location = new System.Drawing.Point(139, 15);
-            this.buttonConnect.Name = "buttonConnect";
-            this.buttonConnect.Size = new System.Drawing.Size(65, 70);
-            this.buttonConnect.TabIndex = 8;
-            this.toolTip1.SetToolTip(this.buttonConnect, "Установить соединение");
-            this.buttonConnect.UseVisualStyleBackColor = true;
-            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
-            // 
-            // buttonSendWayRobot
-            // 
-            this.buttonSendWayRobot.Image = ((System.Drawing.Image)(resources.GetObject("buttonSendWayRobot.Image")));
-            this.buttonSendWayRobot.Location = new System.Drawing.Point(281, 15);
-            this.buttonSendWayRobot.Name = "buttonSendWayRobot";
-            this.buttonSendWayRobot.Size = new System.Drawing.Size(65, 70);
-            this.buttonSendWayRobot.TabIndex = 9;
-            this.toolTip1.SetToolTip(this.buttonSendWayRobot, "Отправить маршрут роботу");
-            this.buttonSendWayRobot.UseVisualStyleBackColor = true;
-            this.buttonSendWayRobot.Click += new System.EventHandler(this.buttonSendWayRobot_Click);
-            // 
-            // buttonStartWay
-            // 
-            this.buttonStartWay.Image = ((System.Drawing.Image)(resources.GetObject("buttonStartWay.Image")));
-            this.buttonStartWay.Location = new System.Drawing.Point(352, 15);
-            this.buttonStartWay.Name = "buttonStartWay";
-            this.buttonStartWay.Size = new System.Drawing.Size(65, 70);
-            this.buttonStartWay.TabIndex = 10;
-            this.toolTip1.SetToolTip(this.buttonStartWay, "Начать выполнение маршрута");
-            this.buttonStartWay.UseVisualStyleBackColor = true;
-            this.buttonStartWay.Click += new System.EventHandler(this.buttonStartWay_Click);
-            // 
-            // buttonStop
-            // 
-            this.buttonStop.Image = ((System.Drawing.Image)(resources.GetObject("buttonStop.Image")));
-            this.buttonStop.Location = new System.Drawing.Point(423, 15);
-            this.buttonStop.Name = "buttonStop";
-            this.buttonStop.Size = new System.Drawing.Size(65, 70);
-            this.buttonStop.TabIndex = 11;
-            this.toolTip1.SetToolTip(this.buttonStop, "Остановить выполнение маршрута");
-            this.buttonStop.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapSelection2
-            // 
-            this.buttonMapSelection2.Image = ((System.Drawing.Image)(resources.GetObject("buttonMapSelection2.Image")));
-            this.buttonMapSelection2.Location = new System.Drawing.Point(494, 15);
-            this.buttonMapSelection2.Name = "buttonMapSelection2";
-            this.buttonMapSelection2.Size = new System.Drawing.Size(65, 70);
-            this.buttonMapSelection2.TabIndex = 12;
-            this.toolTip1.SetToolTip(this.buttonMapSelection2, "Перейти на панель выбора карт");
-            this.buttonMapSelection2.UseVisualStyleBackColor = true;
-            // 
             // panelMapSelection
             // 
             this.panelMapSelection.Controls.Add(this.buttonLoadMapIntoRobot);
@@ -545,6 +384,7 @@
             // 
             // panelUploadRobot
             // 
+            this.panelUploadRobot.Controls.Add(this.buttonBreakConnection);
             this.panelUploadRobot.Controls.Add(this.buttonMapSelection2);
             this.panelUploadRobot.Controls.Add(this.buttonStop);
             this.panelUploadRobot.Controls.Add(this.buttonStartWay);
@@ -554,17 +394,18 @@
             this.panelUploadRobot.Controls.Add(this.buttonGetDirections);
             this.panelUploadRobot.Controls.Add(this.buttonComPortRefresh);
             this.panelUploadRobot.Controls.Add(this.ComPortNumber);
-            this.panelUploadRobot.Location = new System.Drawing.Point(256, 389);
+            this.panelUploadRobot.Location = new System.Drawing.Point(10, 10);
             this.panelUploadRobot.Name = "panelUploadRobot";
-            this.panelUploadRobot.Size = new System.Drawing.Size(610, 88);
+            this.panelUploadRobot.Size = new System.Drawing.Size(549, 88);
             this.panelUploadRobot.TabIndex = 4;
+            this.panelUploadRobot.Visible = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(13, 22);
+            this.label1.Location = new System.Drawing.Point(14, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 17);
             this.label1.TabIndex = 7;
@@ -575,7 +416,7 @@
             this.ComPortNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComPortNumber.Font = new System.Drawing.Font("Times New Roman", 9.75F);
             this.ComPortNumber.FormattingEnabled = true;
-            this.ComPortNumber.Location = new System.Drawing.Point(16, 42);
+            this.ComPortNumber.Location = new System.Drawing.Point(17, 33);
             this.ComPortNumber.Name = "ComPortNumber";
             this.ComPortNumber.Size = new System.Drawing.Size(87, 23);
             this.ComPortNumber.TabIndex = 0;
@@ -585,13 +426,192 @@
             this.timer1.Interval = 300;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // buttonBreakConnection
+            // 
+            this.buttonBreakConnection.Image = ((System.Drawing.Image)(resources.GetObject("buttonBreakConnection.Image")));
+            this.buttonBreakConnection.Location = new System.Drawing.Point(139, 3);
+            this.buttonBreakConnection.Name = "buttonBreakConnection";
+            this.buttonBreakConnection.Size = new System.Drawing.Size(40, 40);
+            this.buttonBreakConnection.TabIndex = 13;
+            this.toolTip1.SetToolTip(this.buttonBreakConnection, "Разорвать соединение");
+            this.buttonBreakConnection.UseVisualStyleBackColor = true;
+            this.buttonBreakConnection.Click += new System.EventHandler(this.buttonBreakConnection_Click);
+            // 
+            // buttonMapSelection2
+            // 
+            this.buttonMapSelection2.Image = global::FindingWaysRobot.Properties.Resources.choices;
+            this.buttonMapSelection2.Location = new System.Drawing.Point(469, 9);
+            this.buttonMapSelection2.Name = "buttonMapSelection2";
+            this.buttonMapSelection2.Size = new System.Drawing.Size(65, 70);
+            this.buttonMapSelection2.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.buttonMapSelection2, "Перейти на панель выбора карт");
+            this.buttonMapSelection2.UseVisualStyleBackColor = true;
+            this.buttonMapSelection2.Click += new System.EventHandler(this.buttonMapSelection2_Click);
+            // 
+            // buttonStop
+            // 
+            this.buttonStop.Enabled = false;
+            this.buttonStop.Image = global::FindingWaysRobot.Properties.Resources.stopLock;
+            this.buttonStop.Location = new System.Drawing.Point(398, 9);
+            this.buttonStop.Name = "buttonStop";
+            this.buttonStop.Size = new System.Drawing.Size(65, 70);
+            this.buttonStop.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.buttonStop, "Остановить выполнение маршрута");
+            this.buttonStop.UseVisualStyleBackColor = true;
+            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
+            // 
+            // buttonStartWay
+            // 
+            this.buttonStartWay.Enabled = false;
+            this.buttonStartWay.Image = global::FindingWaysRobot.Properties.Resources.startWayLock;
+            this.buttonStartWay.Location = new System.Drawing.Point(327, 9);
+            this.buttonStartWay.Name = "buttonStartWay";
+            this.buttonStartWay.Size = new System.Drawing.Size(65, 70);
+            this.buttonStartWay.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.buttonStartWay, "Начать выполнение маршрута");
+            this.buttonStartWay.UseVisualStyleBackColor = true;
+            this.buttonStartWay.Click += new System.EventHandler(this.buttonStartWay_Click);
+            // 
+            // buttonSendWayRobot
+            // 
+            this.buttonSendWayRobot.Enabled = false;
+            this.buttonSendWayRobot.Image = global::FindingWaysRobot.Properties.Resources.LoadInRobotLock;
+            this.buttonSendWayRobot.Location = new System.Drawing.Point(256, 9);
+            this.buttonSendWayRobot.Name = "buttonSendWayRobot";
+            this.buttonSendWayRobot.Size = new System.Drawing.Size(65, 70);
+            this.buttonSendWayRobot.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.buttonSendWayRobot, "Отправить маршрут роботу");
+            this.buttonSendWayRobot.UseVisualStyleBackColor = true;
+            this.buttonSendWayRobot.Click += new System.EventHandler(this.buttonSendWayRobot_Click);
+            // 
+            // buttonConnect
+            // 
+            this.buttonConnect.Image = ((System.Drawing.Image)(resources.GetObject("buttonConnect.Image")));
+            this.buttonConnect.Location = new System.Drawing.Point(139, 45);
+            this.buttonConnect.Name = "buttonConnect";
+            this.buttonConnect.Size = new System.Drawing.Size(40, 40);
+            this.buttonConnect.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.buttonConnect, "Установить соединение");
+            this.buttonConnect.UseVisualStyleBackColor = true;
+            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
+            // 
+            // buttonGetDirections
+            // 
+            this.buttonGetDirections.Image = global::FindingWaysRobot.Properties.Resources.destination;
+            this.buttonGetDirections.Location = new System.Drawing.Point(185, 9);
+            this.buttonGetDirections.Name = "buttonGetDirections";
+            this.buttonGetDirections.Size = new System.Drawing.Size(65, 70);
+            this.buttonGetDirections.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.buttonGetDirections, "Проложить маршрут");
+            this.buttonGetDirections.UseVisualStyleBackColor = true;
+            this.buttonGetDirections.Click += new System.EventHandler(this.buttonGetDirections_Click);
+            // 
+            // buttonComPortRefresh
+            // 
+            this.buttonComPortRefresh.Image = ((System.Drawing.Image)(resources.GetObject("buttonComPortRefresh.Image")));
+            this.buttonComPortRefresh.Location = new System.Drawing.Point(104, 29);
+            this.buttonComPortRefresh.Name = "buttonComPortRefresh";
+            this.buttonComPortRefresh.Size = new System.Drawing.Size(30, 30);
+            this.buttonComPortRefresh.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.buttonComPortRefresh, "Обновить");
+            this.buttonComPortRefresh.UseVisualStyleBackColor = true;
+            this.buttonComPortRefresh.Click += new System.EventHandler(this.buttonComPortRefresh_Click);
+            // 
+            // buttonLoadMapIntoRobot
+            // 
+            this.buttonLoadMapIntoRobot.Image = global::FindingWaysRobot.Properties.Resources.robotConnect;
+            this.buttonLoadMapIntoRobot.Location = new System.Drawing.Point(408, 9);
+            this.buttonLoadMapIntoRobot.Name = "buttonLoadMapIntoRobot";
+            this.buttonLoadMapIntoRobot.Size = new System.Drawing.Size(65, 70);
+            this.buttonLoadMapIntoRobot.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.buttonLoadMapIntoRobot, "Перейти к загрузке карты в робота");
+            this.buttonLoadMapIntoRobot.UseVisualStyleBackColor = true;
+            this.buttonLoadMapIntoRobot.Click += new System.EventHandler(this.buttonLoadMapIntoRobot_Click);
+            // 
+            // buttonDeleteMap
+            // 
+            this.buttonDeleteMap.Image = global::FindingWaysRobot.Properties.Resources.delete;
+            this.buttonDeleteMap.Location = new System.Drawing.Point(337, 9);
+            this.buttonDeleteMap.Name = "buttonDeleteMap";
+            this.buttonDeleteMap.Size = new System.Drawing.Size(65, 70);
+            this.buttonDeleteMap.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.buttonDeleteMap, "Удалить карту");
+            this.buttonDeleteMap.UseVisualStyleBackColor = true;
+            this.buttonDeleteMap.Click += new System.EventHandler(this.buttonDeleteMap_Click);
+            // 
+            // buttonMapEdit
+            // 
+            this.buttonMapEdit.Image = global::FindingWaysRobot.Properties.Resources.edit;
+            this.buttonMapEdit.Location = new System.Drawing.Point(195, 9);
+            this.buttonMapEdit.Name = "buttonMapEdit";
+            this.buttonMapEdit.Size = new System.Drawing.Size(65, 70);
+            this.buttonMapEdit.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.buttonMapEdit, "Редактировать карту");
+            this.buttonMapEdit.UseVisualStyleBackColor = true;
+            this.buttonMapEdit.Click += new System.EventHandler(this.buttonMapEdit_Click);
+            // 
+            // buttonCreateMap
+            // 
+            this.buttonCreateMap.Image = ((System.Drawing.Image)(resources.GetObject("buttonCreateMap.Image")));
+            this.buttonCreateMap.Location = new System.Drawing.Point(266, 9);
+            this.buttonCreateMap.Name = "buttonCreateMap";
+            this.buttonCreateMap.Size = new System.Drawing.Size(65, 70);
+            this.buttonCreateMap.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.buttonCreateMap, "Создать новую карту");
+            this.buttonCreateMap.UseVisualStyleBackColor = true;
+            this.buttonCreateMap.Click += new System.EventHandler(this.buttonCreateMap_Click);
+            // 
+            // buttonSetRemoveFinish
+            // 
+            this.buttonSetRemoveFinish.Image = global::FindingWaysRobot.Properties.Resources.finish;
+            this.buttonSetRemoveFinish.Location = new System.Drawing.Point(498, 9);
+            this.buttonSetRemoveFinish.Name = "buttonSetRemoveFinish";
+            this.buttonSetRemoveFinish.Size = new System.Drawing.Size(65, 70);
+            this.buttonSetRemoveFinish.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.buttonSetRemoveFinish, "Установить/убрать финишную точку");
+            this.buttonSetRemoveFinish.UseVisualStyleBackColor = true;
+            this.buttonSetRemoveFinish.Click += new System.EventHandler(this.buttonSetRemoveFinish_Click);
+            // 
+            // buttonInstallOrRemoveRobot
+            // 
+            this.buttonInstallOrRemoveRobot.Image = global::FindingWaysRobot.Properties.Resources.robot;
+            this.buttonInstallOrRemoveRobot.Location = new System.Drawing.Point(569, 9);
+            this.buttonInstallOrRemoveRobot.Name = "buttonInstallOrRemoveRobot";
+            this.buttonInstallOrRemoveRobot.Size = new System.Drawing.Size(65, 70);
+            this.buttonInstallOrRemoveRobot.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.buttonInstallOrRemoveRobot, "Установить/убрать робота с карты");
+            this.buttonInstallOrRemoveRobot.UseVisualStyleBackColor = true;
+            this.buttonInstallOrRemoveRobot.Click += new System.EventHandler(this.buttonInstallOrRemoveRobot_Click);
+            // 
+            // buttonMapSelection
+            // 
+            this.buttonMapSelection.Image = ((System.Drawing.Image)(resources.GetObject("buttonMapSelection.Image")));
+            this.buttonMapSelection.Location = new System.Drawing.Point(711, 9);
+            this.buttonMapSelection.Name = "buttonMapSelection";
+            this.buttonMapSelection.Size = new System.Drawing.Size(65, 70);
+            this.buttonMapSelection.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.buttonMapSelection, "Перейти на панель выбора карт");
+            this.buttonMapSelection.UseVisualStyleBackColor = true;
+            this.buttonMapSelection.Click += new System.EventHandler(this.buttonMapSelection_Click);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Image = ((System.Drawing.Image)(resources.GetObject("buttonSave.Image")));
+            this.buttonSave.Location = new System.Drawing.Point(640, 9);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(65, 70);
+            this.buttonSave.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.buttonSave, "Сохранить карту");
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1167, 506);
+            this.ClientSize = new System.Drawing.Size(1167, 597);
             this.Controls.Add(this.panelUploadRobot);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.panelMapSelection);
@@ -660,6 +680,7 @@
         private System.Windows.Forms.Button buttonSendWayRobot;
         private System.Windows.Forms.Button buttonConnect;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button buttonBreakConnection;
     }
 }
 

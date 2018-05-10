@@ -228,37 +228,40 @@ namespace FindingWaysRobot
         /* Разрешенные значения dataGridView */
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
-            MapEdit currentCellColor = new MapEdit();
-            if (
-                 currentCellColor.searchRobotInstall(Convert.ToString(dataGridView1.CurrentCell.Value), false) == false &&
-                 currentCellColor.SearchFinishInstall(Convert.ToString(dataGridView1.CurrentCell.Value), false) == false
-                )
+            if (AStar.robotGo == false)
             {
-                if (e.KeyChar == '1')
+                MapEdit currentCellColor = new MapEdit();
+                if (
+                     currentCellColor.searchRobotInstall(Convert.ToString(dataGridView1.CurrentCell.Value), false) == false &&
+                     currentCellColor.SearchFinishInstall(Convert.ToString(dataGridView1.CurrentCell.Value), false) == false
+                    )
                 {
-                    dataGridView1.CurrentCell.Value = MapEdit.PatencyGood;
-                    dataGridView1.CurrentCell.Style.BackColor = currentCellColor.CellColor(MapEdit.PatencyGood);
+                    if (e.KeyChar == '1')
+                    {
+                        dataGridView1.CurrentCell.Value = MapEdit.PatencyGood;
+                        dataGridView1.CurrentCell.Style.BackColor = currentCellColor.CellColor(MapEdit.PatencyGood);
+                    }
+                    else
+                    if (e.KeyChar == '2')
+                    {
+                        dataGridView1.CurrentCell.Value = MapEdit.PatencyMedium;
+                        dataGridView1.CurrentCell.Style.BackColor = currentCellColor.CellColor(MapEdit.PatencyMedium);
+                    }
+                    else
+                    if (e.KeyChar == '3')
+                    {
+                        dataGridView1.CurrentCell.Value = MapEdit.PatencyBad;
+                        dataGridView1.CurrentCell.Style.BackColor = currentCellColor.CellColor(MapEdit.PatencyBad);
+                    }
+                    else
+                    if (e.KeyChar == 'w')
+                    {
+                        dataGridView1.CurrentCell.Value = "w";
+                        dataGridView1.CurrentCell.Style.BackColor = currentCellColor.CellColor("w");
+                    }
                 }
-                else
-                if (e.KeyChar == '2')
-                {
-                    dataGridView1.CurrentCell.Value = MapEdit.PatencyMedium;
-                    dataGridView1.CurrentCell.Style.BackColor = currentCellColor.CellColor(MapEdit.PatencyMedium);
-                }
-                else
-                if (e.KeyChar == '3')
-                {
-                    dataGridView1.CurrentCell.Value = MapEdit.PatencyBad;
-                    dataGridView1.CurrentCell.Style.BackColor = currentCellColor.CellColor(MapEdit.PatencyBad);
-                }
-                else
-                if (e.KeyChar == 'w')
-                {
-                    dataGridView1.CurrentCell.Value = "w";
-                    dataGridView1.CurrentCell.Style.BackColor = currentCellColor.CellColor("w");
-                }
-            }
+            }//robotGo==false
+
         }
 
         /* Запред на ввод кирилицы. Разрешены только [a-z,A-Z, 0-9] и "_" */
@@ -486,7 +489,6 @@ namespace FindingWaysRobot
             int current_Y = XStar ;
             int currentPosition = RobotPosition;
 
-
             for (int i = GLOBAL_way.GetLength(0)-1; i >= 0; i--)
             {
                 if (currentPosition == 2)
@@ -519,16 +521,26 @@ namespace FindingWaysRobot
                 }
             }//for
 
-
             GLOBAL_buf_timerPlus = 0;
             GLOBAL_X_timer = YStart;
             GLOBAL_Y_timer = XStar;
             GLOBAL_X_finish_stop = YFinish;
             GLOBAL_Y_finish_stop = XFinish;
-
             GLOBAL_initialPositionRobot_timer = RobotPosition;
-
-
+            try
+            {
+                if (SerialPort.IsOpen == true)
+                {
+                    buttonSendWayRobot.Image = Properties.Resources.LoadInRobot;
+                    buttonSendWayRobot.Enabled = true;
+                } else
+                {
+                    statusBar.AppendText("● Отсутствует соединение с каким либо портом \n");
+                }
+            } catch
+            {
+                statusBar.AppendText("● Отсутствует соединение с каким либо портом \n");
+            }
         }//buttonGetDirections
 
         /* Очищает карту от цвета пути*/
@@ -565,6 +577,7 @@ namespace FindingWaysRobot
             ComPortRefresh();
         }
 
+        /* Установить соединение с COM портом */
         private void buttonConnect_Click(object sender, EventArgs e)
         {
 
@@ -579,7 +592,7 @@ namespace FindingWaysRobot
                 SerialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
                 statusBar.AppendText("● Установка соединения с портом " + Convert.ToString(ComPortNumber.SelectedItem) + "..." + "\n");
                 SerialPort.Open();
-                statusBar.AppendText("● Соединение c " + Convert.ToString(ComPortNumber.SelectedItem) + " успешно установлено " + "\n");
+                statusBar.AppendText("● Соединение c " + SerialPort.PortName + " успешно установлено " + "\n");
 
             }
             catch
@@ -588,7 +601,6 @@ namespace FindingWaysRobot
 
             }
         }
-
         private void DataReceivedHandler(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             string POT = SerialPort.ReadLine();
@@ -602,39 +614,47 @@ namespace FindingWaysRobot
             {
                 if (SerialPort.IsOpen == true)
                 {
-                    MessageBox.Show("ОТКРЫТ");
-                    SerialPort.Write("Hello from C#");
+                    buttonStartWay.Enabled = true;
+                    buttonStartWay.Image = Properties.Resources.startWay;
+                    statusBar.AppendText("● Маршрут отправлен роботу \n");
+                }
+                else
+                {
+                    statusBar.AppendText("● Отсутствует соединение с каким либо портом \n");
                 }
             }
             catch
             {
-                MessageBox.Show("ЗАКРЫТ");
-            }
-
-
-               
-                
-            
+                statusBar.AppendText("● Отсутствует соединение с каким либо портом \n");
+            }           
         }
 
         /* Начать путь */
         private void buttonStartWay_Click(object sender, EventArgs e)
         {
+            AStar.robotGo = true;
+            buttonSendWayRobot.Image = Properties.Resources.LoadInRobotLock;
+            buttonSendWayRobot.Enabled = false;
+
+            buttonMapSelection2.Image = Properties.Resources.choicesLock;
+            buttonMapSelection2.Enabled = false;
+
+            buttonGetDirections.Image = Properties.Resources.destinationLock;
+            buttonGetDirections.Enabled = false;
+
+            buttonStop.Image = Properties.Resources.stop;
+            buttonStop.Enabled = true;
+
+            buttonStartWay.Enabled = false;
+            buttonStartWay.Image = Properties.Resources.startWayLock;
+
             timer1.Enabled = true;
         }
-
-      
-        
+     
         /* Таймер */
         private void timer1_Tick(object sender, EventArgs e)
         {
-
             MapEdit M = new MapEdit();
-
-
-
-
-
             for (int i = 0; i < 1; i++)
             {
 
@@ -787,59 +807,93 @@ namespace FindingWaysRobot
                 MapEdit.installRobot = true;
                 MapEdit.installFinish = false;
                 imageButtonRobotFinish();
+                //Положение кнопок 
+                AStar.robotGo = false;
+                buttonSendWayRobot.Image = Properties.Resources.LoadInRobotLock;
+                buttonSendWayRobot.Enabled = false;
 
+                buttonMapSelection2.Image = Properties.Resources.choices;
+                buttonMapSelection2.Enabled = true;
+
+                buttonGetDirections.Image = Properties.Resources.destination;
+                buttonGetDirections.Enabled = true;
+
+                buttonStop.Image = Properties.Resources.stopLock;
+                buttonStop.Enabled = false;
+
+                buttonStartWay.Image = Properties.Resources.startWayLock;
+                buttonStartWay.Enabled = false;
             }
 
+        }//timer1_Tick
 
+        /* Разорвать все активные соединения */
+        private void buttonBreakConnection_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SerialPort.Close();
+                statusBar.AppendText("● Закрыто соединение с " + SerialPort.PortName + " \n");
+            }
+            catch
+            {
 
+                statusBar.AppendText("● Отсутствует соединение с каким либо портом \n");
+            }
+        }
 
+        /*Кнопка перехода на панель выбора карт с панели panelUploadRobot*/
+        private void buttonMapSelection2_Click(object sender, EventArgs e)
+        {
+            AStar.robotGo = false;
+            buttonSendWayRobot.Image = Properties.Resources.LoadInRobotLock;
+            buttonSendWayRobot.Enabled = false;
 
+            buttonMapSelection2.Image = Properties.Resources.choices;
+            buttonMapSelection2.Enabled = true;
 
+            buttonGetDirections.Image = Properties.Resources.destination;
+            buttonGetDirections.Enabled = true;
 
+            buttonStop.Image = Properties.Resources.stopLock;
+            buttonStop.Enabled = false;
 
+            buttonStartWay.Image = Properties.Resources.startWayLock;
+            buttonStartWay.Enabled = false;
+            panelUploadRobot.Visible = false;
+            panelMapSelection.Visible = true;
 
+            WayColorClear();
+        }
 
+        /* Остановка выполнения маршрута */
+        private void buttonStop_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
 
+            AStar.robotGo = false;
+            buttonSendWayRobot.Image = Properties.Resources.LoadInRobotLock;
+            buttonSendWayRobot.Enabled = false;
 
+            buttonMapSelection2.Image = Properties.Resources.choices;
+            buttonMapSelection2.Enabled = true;
 
+            buttonGetDirections.Image = Properties.Resources.destination;
+            buttonGetDirections.Enabled = true;
 
+            buttonStop.Image = Properties.Resources.stopLock;
+            buttonStop.Enabled = false;
 
+            buttonStartWay.Image = Properties.Resources.startWayLock;
+            buttonStartWay.Enabled = false;
+        }
 
-
-
-
-
-
-
-
-
-
-
-        }/////////////////
-
-
-
-
-
-        /* Проверяет простроен ли путь и его актуальность */
-
-        //private void LoadMapIntoRobotVerification()
-        //{
-
-        //    if (AStar.wayBuild == true)
-        //    {
-        //        AStar.wayBuild = false;
-        //        buttonLoadMapIntoRobot.Enabled =true;
-        //        buttonLoadMapIntoRobot.Image = Properties.Resources.robotConnect;
-        //    }
-        //    else
-        //    {
-        //        buttonLoadMapIntoRobot.Enabled = false;
-        //        buttonLoadMapIntoRobot.Image = Properties.Resources.robotConnectLock;
-        //    }
-
-        //}
-
+        /* переход на панелт загрузки карты в робота */
+        private void buttonLoadMapIntoRobot_Click(object sender, EventArgs e)
+        {
+            panelUploadRobot.Visible = true;
+            panelMapSelection.Visible = false;
+        }
 
     }//form
 }//namespace
