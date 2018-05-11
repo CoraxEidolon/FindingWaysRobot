@@ -39,10 +39,17 @@ namespace FindingWaysRobot
         {
             dataGridView1.RowTemplate.Height = GLOBAL_cellSize;
             standardClearMap();       
-            SetNullInTextBox(this.Controls);
-            DataBase.connectionString = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=Password;Database=databasemaps;";
+            SetNullInTextBox(this.Controls);        
+            /* ПОДКЛЮЧЕНИЕ К БД */
+            DataBase.connectionString = Properties.Settings.Default.connectionDatabase;
+            textBoxConnectingDatabase.Text = Properties.Settings.Default.connectionDatabase;
             RobotPosition.SelectedIndex = 0;
             loadAllMapInSelectTable(true);
+            /* Прозрачность кнопок */
+            trackBarTransparency.Value = Properties.Settings.Default.Transparency;
+            labelTransparency.Text = "Прозрачность: " + trackBarTransparency.Value;
+           
+
         }
 
         /* Перебор контролов и вложенных в них контролы и делаем кнопки круглыми. С нулевой вложенностью не работает */
@@ -52,7 +59,7 @@ namespace FindingWaysRobot
             {
                 if (_control is Button & String.IsNullOrEmpty(_control.Text))
                 {
-                    ((Button)_control).BackColor = Color.FromArgb(80, 181, 40, 9); // цвет кнопки
+                    ((Button)_control).BackColor = Color.FromArgb(Properties.Settings.Default.Transparency, Properties.Settings.Default.ButtonColor); // цвет кнопки
                     System.Drawing.Drawing2D.GraphicsPath myPath = new System.Drawing.Drawing2D.GraphicsPath();
                     myPath.AddEllipse(0, 0, ((Button)_control).Width, ((Button)_control).Height);
                     Region myRegion = new Region(myPath);
@@ -124,39 +131,46 @@ namespace FindingWaysRobot
         /* Сохраняет карту */
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            DataBase DB = new DataBase();          
-            if (DB.verificationMap(textBoxMapName.Text) == true)
+            if (DataBase.checkСonnection() == true)
             {
-                if (DataBase.editTable == false)
+                DataBase DB = new DataBase();
+                if (DB.verificationMap(textBoxMapName.Text) == true)
                 {
-                    DB.InquiryNOReturnValue("create table " + textBoxMapName.Text + " (map varchar(100));");
-                }
-                else
-                {
-                    if (DataBase.currentTableName != textBoxMapName.Text)
+                    if (DataBase.editTable == false)
                     {
-                        DB.InquiryNOReturnValue("ALTER TABLE " + DataBase.currentTableName + " RENAME TO " + textBoxMapName.Text + ";");
+                        DB.InquiryNOReturnValue("create table " + textBoxMapName.Text + " (map varchar(100));");
                     }
-                    DB.InquiryNOReturnValue("DELETE FROM "+ textBoxMapName.Text + ";");
-                }
-                DB.InquiryNOReturnValue("INSERT INTO " + textBoxMapName.Text + " (map) VALUES ('" + dataGridView1.RowCount + "');");
-                DB.InquiryNOReturnValue("INSERT INTO " + textBoxMapName.Text + " (map) VALUES ('" + dataGridView1.ColumnCount + "');");
-                /* Сохраняем карту */
-                for (int i = 0; i < dataGridView1.RowCount; i++)
-                {
-                    for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                    else
                     {
-                        DB.InquiryNOReturnValue("INSERT INTO " + textBoxMapName.Text + " (map) VALUES ('" + Convert.ToString(dataGridView1.Rows[i].Cells[j].Value) + "');");
-                    } // for j
-                }// for i
+                        if (DataBase.currentTableName != textBoxMapName.Text)
+                        {
+                            DB.InquiryNOReturnValue("ALTER TABLE " + DataBase.currentTableName + " RENAME TO " + textBoxMapName.Text + ";");
+                        }
+                        DB.InquiryNOReturnValue("DELETE FROM " + textBoxMapName.Text + ";");
+                    }
+                    DB.InquiryNOReturnValue("INSERT INTO " + textBoxMapName.Text + " (map) VALUES ('" + dataGridView1.RowCount + "');");
+                    DB.InquiryNOReturnValue("INSERT INTO " + textBoxMapName.Text + " (map) VALUES ('" + dataGridView1.ColumnCount + "');");
+                    /* Сохраняем карту */
+                    for (int i = 0; i < dataGridView1.RowCount; i++)
+                    {
+                        for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                        {
+                            DB.InquiryNOReturnValue("INSERT INTO " + textBoxMapName.Text + " (map) VALUES ('" + Convert.ToString(dataGridView1.Rows[i].Cells[j].Value) + "');");
+                        } // for j
+                    }// for i
 
-                statusBar.SelectionColor = Color.Green;
-                statusBar.AppendText("● Сохранена карта «" + textBoxMapName.Text + "»\n");
-                DataBase.editTable = true;//включаем режим редактирования
-                DataBase.currentTableName = textBoxMapName.Text;
-            }//verification
-            loadAllMapInSelectTable(false);
-           
+                    statusBar.SelectionColor = Color.Green;
+                    statusBar.AppendText("● Сохранена карта «" + textBoxMapName.Text + "»\n");
+                    DataBase.editTable = true;//включаем режим редактирования
+                    DataBase.currentTableName = textBoxMapName.Text;
+                }//verification
+                loadAllMapInSelectTable(false);
+            }
+            else
+            {
+                statusBar.SelectionColor = Color.Red;
+                statusBar.AppendText("● Не удалось выполнить подключение к БД \n");
+            } 
         }//buttonSave
 
         /* Устанавливает/убирает точку финиша на карте */
@@ -895,5 +909,77 @@ namespace FindingWaysRobot
             panelMapSelection.Visible = false;
         }
 
+        /* Открыть окно настроек */
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            panelSettings.Visible = true;
+        }
+
+        /* Закрыть окно настроек */
+        private void buttonSettingsClose_Click(object sender, EventArgs e)
+        {
+            panelSettings.Visible = false;
+            Properties.Settings.Default.Reload();
+            SetColorButton(this.Controls);
+        }
+
+        /* Определяет цвет кнопки */
+        private void buttonSetColor_Click(object sender, EventArgs e)
+        {
+            colorDialog1.ShowDialog();
+            Properties.Settings.Default.ButtonColor = colorDialog1.Color;
+            SetColorButton(this.Controls);
+        }
+
+        private void trackBarTransparency_Scroll(object sender, EventArgs e)
+        {
+            labelTransparency.Text = "Прозрачность: " + trackBarTransparency.Value;
+            Properties.Settings.Default.Transparency = trackBarTransparency.Value;
+            SetColorButton(this.Controls);
+        }
+
+
+        /* Определяет цвет ВСЕХ кнопок */
+        private void SetColorButton(Control.ControlCollection control)
+        {
+            foreach (Control _control in control)
+            {
+                if (_control is Button & String.IsNullOrEmpty(_control.Text))
+                {
+                    ((Button)_control).BackColor = Color.FromArgb(Properties.Settings.Default.Transparency, Properties.Settings.Default.ButtonColor); // цвет кнопки                 
+                }
+                if (_control.Controls.Count > 0)
+                {
+                    SetNullInTextBox(_control.Controls);
+                }
+            }
+        }
+
+
+        /*Сохранить настройки*/
+        private void buttonSettingsSave_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.connectionDatabase= textBoxConnectingDatabase.Text;
+            Properties.Settings.Default.Save();
+            statusBar.SelectionColor = Color.Green;
+            statusBar.AppendText("● Настройки сохранены \n");
+        }
+
+        private void buttonCheckConnection_Click(object sender, EventArgs e)
+        {
+            DataBase.connectionString = textBoxConnectingDatabase.Text;
+
+            if (DataBase.checkСonnection() == true)
+            {
+                statusBar.SelectionColor = Color.Green;
+                statusBar.AppendText("● Подключение к БД корректно \n");
+            }
+            else
+            {
+                statusBar.SelectionColor = Color.Red;
+                statusBar.AppendText("● Не удалось выполнить подключение к БД \n");
+
+            }
+        }
     }//form
 }//namespace

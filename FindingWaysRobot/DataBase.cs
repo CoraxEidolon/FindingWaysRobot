@@ -24,8 +24,7 @@ namespace FindingWaysRobot
             NpgsqlDataReader npgSqlDataReader = npgSqlCommand.ExecuteReader();
             List<string> arResult = new List<string>();
             if (npgSqlDataReader.HasRows)
-            {
-                
+            {         
                 while (npgSqlDataReader.Read())
                 {
                     arResult.Add(npgSqlDataReader.GetString(0));
@@ -50,20 +49,33 @@ namespace FindingWaysRobot
         /* Метод возвращает ВСЕ таблицы БД */
         public string[] AllTable()
         {
-            NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString);
-            npgSqlConnection.Open();
-            NpgsqlCommand npgSqlCommand = new NpgsqlCommand("SELECT table_name FROM information_schema.tables  WHERE table_schema='public' ORDER BY table_name;", npgSqlConnection);
-            NpgsqlDataReader npgSqlDataReader = npgSqlCommand.ExecuteReader();
-            List<string> arResult = new List<string>();
-            if (npgSqlDataReader.HasRows)
+            try
             {
-                while (npgSqlDataReader.Read())
+                NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString);
+                npgSqlConnection.Open();
+                NpgsqlCommand npgSqlCommand = new NpgsqlCommand("SELECT table_name FROM information_schema.tables  WHERE table_schema='public' ORDER BY table_name;", npgSqlConnection);
+                NpgsqlDataReader npgSqlDataReader = npgSqlCommand.ExecuteReader();
+                List<string> arResult = new List<string>();
+                if (npgSqlDataReader.HasRows)
                 {
-                    arResult.Add(npgSqlDataReader.GetString(0));
+                    while (npgSqlDataReader.Read())
+                    {
+                        arResult.Add(npgSqlDataReader.GetString(0));
+                    }
                 }
-            }  
-            return (arResult.ToArray());   
-        }
+                return (arResult.ToArray());
+            }
+            catch
+            {
+                List<string> arResult = new List<string>();
+                MessageBox.Show("Не удалось выполнить подключение к БД. Проверьте подключение в настройках программы.");
+                return (arResult.ToArray());
+            }
+
+
+
+          
+        }//AllTable
 
         /* Проверяет таблицу на корректность */
         public bool verificationMap(string mapName)
@@ -102,6 +114,33 @@ namespace FindingWaysRobot
 
             return (OK);
         }
+
+
+        /* Метод производит запросы которые возвращают значения */
+        public static bool checkСonnection()
+        {
+            NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString);
+            bool OK = false;
+            try
+            {
+                npgSqlConnection.Open();
+                npgSqlConnection.Close();
+                OK = true;
+            }
+            catch
+            {
+                OK = false;
+            }
+      
+            return (OK);
+        }
+
+
+
+
+
+
+
 
     }//class
 }

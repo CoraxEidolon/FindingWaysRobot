@@ -44,20 +44,16 @@
             this.labelPatency1 = new System.Windows.Forms.Label();
             this.textBoxMapName = new System.Windows.Forms.TextBox();
             this.RobotPosition = new System.Windows.Forms.ComboBox();
+            this.buttonSetRemoveFinish = new System.Windows.Forms.Button();
+            this.buttonInstallOrRemoveRobot = new System.Windows.Forms.Button();
+            this.buttonMapSelection = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.LabelLines = new System.Windows.Forms.Label();
             this.LabelСolumns = new System.Windows.Forms.Label();
             this.numberOfLines = new System.Windows.Forms.NumericUpDown();
             this.numberOfСolumns = new System.Windows.Forms.NumericUpDown();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panelMapSelection = new System.Windows.Forms.Panel();
-            this.labelMapSelect = new System.Windows.Forms.Label();
-            this.SelectTable = new System.Windows.Forms.ComboBox();
-            this.statusBar = new System.Windows.Forms.RichTextBox();
-            this.panelUploadRobot = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ComPortNumber = new System.Windows.Forms.ComboBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.buttonBreakConnection = new System.Windows.Forms.Button();
             this.buttonMapSelection2 = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
@@ -70,16 +66,42 @@
             this.buttonDeleteMap = new System.Windows.Forms.Button();
             this.buttonMapEdit = new System.Windows.Forms.Button();
             this.buttonCreateMap = new System.Windows.Forms.Button();
-            this.buttonSetRemoveFinish = new System.Windows.Forms.Button();
-            this.buttonInstallOrRemoveRobot = new System.Windows.Forms.Button();
-            this.buttonMapSelection = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonSettings = new System.Windows.Forms.Button();
+            this.buttonSettingsClose = new System.Windows.Forms.Button();
+            this.buttonSettingsSave = new System.Windows.Forms.Button();
+            this.buttonSetColor = new System.Windows.Forms.Button();
+            this.panelMapSelection = new System.Windows.Forms.Panel();
+            this.labelMapSelect = new System.Windows.Forms.Label();
+            this.SelectTable = new System.Windows.Forms.ComboBox();
+            this.statusBar = new System.Windows.Forms.RichTextBox();
+            this.panelUploadRobot = new System.Windows.Forms.Panel();
+            this.labelComPortNumber = new System.Windows.Forms.Label();
+            this.ComPortNumber = new System.Windows.Forms.ComboBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panelSettings = new System.Windows.Forms.Panel();
+            this.labelSettings = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.labelSetColor = new System.Windows.Forms.Label();
+            this.labelTransparency = new System.Windows.Forms.Label();
+            this.trackBarTransparency = new System.Windows.Forms.TrackBar();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.labelCheckConnection = new System.Windows.Forms.Label();
+            this.buttonCheckConnection = new System.Windows.Forms.Button();
+            this.labelConnectingDatabase = new System.Windows.Forms.Label();
+            this.textBoxConnectingDatabase = new System.Windows.Forms.TextBox();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.panelCreateEditMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfLines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfСolumns)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelMapSelection.SuspendLayout();
             this.panelUploadRobot.SuspendLayout();
+            this.panelSettings.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarTransparency)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelCreateEditMap
@@ -259,6 +281,50 @@
             this.RobotPosition.Size = new System.Drawing.Size(42, 22);
             this.RobotPosition.TabIndex = 8;
             // 
+            // buttonSetRemoveFinish
+            // 
+            this.buttonSetRemoveFinish.Image = global::FindingWaysRobot.Properties.Resources.finish;
+            this.buttonSetRemoveFinish.Location = new System.Drawing.Point(498, 9);
+            this.buttonSetRemoveFinish.Name = "buttonSetRemoveFinish";
+            this.buttonSetRemoveFinish.Size = new System.Drawing.Size(65, 70);
+            this.buttonSetRemoveFinish.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.buttonSetRemoveFinish, "Установить/убрать финишную точку");
+            this.buttonSetRemoveFinish.UseVisualStyleBackColor = true;
+            this.buttonSetRemoveFinish.Click += new System.EventHandler(this.buttonSetRemoveFinish_Click);
+            // 
+            // buttonInstallOrRemoveRobot
+            // 
+            this.buttonInstallOrRemoveRobot.Image = global::FindingWaysRobot.Properties.Resources.robot;
+            this.buttonInstallOrRemoveRobot.Location = new System.Drawing.Point(569, 9);
+            this.buttonInstallOrRemoveRobot.Name = "buttonInstallOrRemoveRobot";
+            this.buttonInstallOrRemoveRobot.Size = new System.Drawing.Size(65, 70);
+            this.buttonInstallOrRemoveRobot.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.buttonInstallOrRemoveRobot, "Установить/убрать робота с карты");
+            this.buttonInstallOrRemoveRobot.UseVisualStyleBackColor = true;
+            this.buttonInstallOrRemoveRobot.Click += new System.EventHandler(this.buttonInstallOrRemoveRobot_Click);
+            // 
+            // buttonMapSelection
+            // 
+            this.buttonMapSelection.Image = ((System.Drawing.Image)(resources.GetObject("buttonMapSelection.Image")));
+            this.buttonMapSelection.Location = new System.Drawing.Point(711, 9);
+            this.buttonMapSelection.Name = "buttonMapSelection";
+            this.buttonMapSelection.Size = new System.Drawing.Size(65, 70);
+            this.buttonMapSelection.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.buttonMapSelection, "Перейти на панель выбора карт");
+            this.buttonMapSelection.UseVisualStyleBackColor = true;
+            this.buttonMapSelection.Click += new System.EventHandler(this.buttonMapSelection_Click);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Image = ((System.Drawing.Image)(resources.GetObject("buttonSave.Image")));
+            this.buttonSave.Location = new System.Drawing.Point(640, 9);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(65, 70);
+            this.buttonSave.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.buttonSave, "Сохранить карту");
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
             // LabelLines
             // 
             this.LabelLines.AutoSize = true;
@@ -335,96 +401,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(52, 53);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
-            // 
-            // panelMapSelection
-            // 
-            this.panelMapSelection.Controls.Add(this.buttonLoadMapIntoRobot);
-            this.panelMapSelection.Controls.Add(this.labelMapSelect);
-            this.panelMapSelection.Controls.Add(this.SelectTable);
-            this.panelMapSelection.Controls.Add(this.buttonDeleteMap);
-            this.panelMapSelection.Controls.Add(this.buttonMapEdit);
-            this.panelMapSelection.Controls.Add(this.buttonCreateMap);
-            this.panelMapSelection.Location = new System.Drawing.Point(10, 10);
-            this.panelMapSelection.Name = "panelMapSelection";
-            this.panelMapSelection.Size = new System.Drawing.Size(492, 88);
-            this.panelMapSelection.TabIndex = 2;
-            // 
-            // labelMapSelect
-            // 
-            this.labelMapSelect.AutoSize = true;
-            this.labelMapSelect.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.labelMapSelect.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelMapSelect.Location = new System.Drawing.Point(7, 22);
-            this.labelMapSelect.Name = "labelMapSelect";
-            this.labelMapSelect.Size = new System.Drawing.Size(113, 17);
-            this.labelMapSelect.TabIndex = 1;
-            this.labelMapSelect.Text = "Выберете карту:";
-            // 
-            // SelectTable
-            // 
-            this.SelectTable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SelectTable.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SelectTable.FormattingEnabled = true;
-            this.SelectTable.Location = new System.Drawing.Point(10, 42);
-            this.SelectTable.Name = "SelectTable";
-            this.SelectTable.Size = new System.Drawing.Size(167, 23);
-            this.SelectTable.TabIndex = 0;
-            this.SelectTable.SelectedIndexChanged += new System.EventHandler(this.SelectTable_SelectedIndexChanged);
-            // 
-            // statusBar
-            // 
-            this.statusBar.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.statusBar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.statusBar.Location = new System.Drawing.Point(12, 107);
-            this.statusBar.Name = "statusBar";
-            this.statusBar.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.statusBar.Size = new System.Drawing.Size(238, 304);
-            this.statusBar.TabIndex = 3;
-            this.statusBar.Text = "";
-            // 
-            // panelUploadRobot
-            // 
-            this.panelUploadRobot.Controls.Add(this.buttonBreakConnection);
-            this.panelUploadRobot.Controls.Add(this.buttonMapSelection2);
-            this.panelUploadRobot.Controls.Add(this.buttonStop);
-            this.panelUploadRobot.Controls.Add(this.buttonStartWay);
-            this.panelUploadRobot.Controls.Add(this.buttonSendWayRobot);
-            this.panelUploadRobot.Controls.Add(this.buttonConnect);
-            this.panelUploadRobot.Controls.Add(this.label1);
-            this.panelUploadRobot.Controls.Add(this.buttonGetDirections);
-            this.panelUploadRobot.Controls.Add(this.buttonComPortRefresh);
-            this.panelUploadRobot.Controls.Add(this.ComPortNumber);
-            this.panelUploadRobot.Location = new System.Drawing.Point(10, 10);
-            this.panelUploadRobot.Name = "panelUploadRobot";
-            this.panelUploadRobot.Size = new System.Drawing.Size(549, 88);
-            this.panelUploadRobot.TabIndex = 4;
-            this.panelUploadRobot.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 11.25F);
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(14, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 17);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Номер Com порта:";
-            // 
-            // ComPortNumber
-            // 
-            this.ComPortNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComPortNumber.Font = new System.Drawing.Font("Times New Roman", 9.75F);
-            this.ComPortNumber.FormattingEnabled = true;
-            this.ComPortNumber.Location = new System.Drawing.Point(17, 33);
-            this.ComPortNumber.Name = "ComPortNumber";
-            this.ComPortNumber.Size = new System.Drawing.Size(87, 23);
-            this.ComPortNumber.TabIndex = 0;
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 300;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // buttonBreakConnection
             // 
@@ -561,49 +537,268 @@
             this.buttonCreateMap.UseVisualStyleBackColor = true;
             this.buttonCreateMap.Click += new System.EventHandler(this.buttonCreateMap_Click);
             // 
-            // buttonSetRemoveFinish
+            // buttonSettings
             // 
-            this.buttonSetRemoveFinish.Image = global::FindingWaysRobot.Properties.Resources.finish;
-            this.buttonSetRemoveFinish.Location = new System.Drawing.Point(498, 9);
-            this.buttonSetRemoveFinish.Name = "buttonSetRemoveFinish";
-            this.buttonSetRemoveFinish.Size = new System.Drawing.Size(65, 70);
-            this.buttonSetRemoveFinish.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.buttonSetRemoveFinish, "Установить/убрать финишную точку");
-            this.buttonSetRemoveFinish.UseVisualStyleBackColor = true;
-            this.buttonSetRemoveFinish.Click += new System.EventHandler(this.buttonSetRemoveFinish_Click);
+            this.buttonSettings.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettings.Image")));
+            this.buttonSettings.Location = new System.Drawing.Point(10, 417);
+            this.buttonSettings.Name = "buttonSettings";
+            this.buttonSettings.Size = new System.Drawing.Size(40, 40);
+            this.buttonSettings.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.buttonSettings, "Настройки ");
+            this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 
-            // buttonInstallOrRemoveRobot
+            // buttonSettingsClose
             // 
-            this.buttonInstallOrRemoveRobot.Image = global::FindingWaysRobot.Properties.Resources.robot;
-            this.buttonInstallOrRemoveRobot.Location = new System.Drawing.Point(569, 9);
-            this.buttonInstallOrRemoveRobot.Name = "buttonInstallOrRemoveRobot";
-            this.buttonInstallOrRemoveRobot.Size = new System.Drawing.Size(65, 70);
-            this.buttonInstallOrRemoveRobot.TabIndex = 6;
-            this.toolTip1.SetToolTip(this.buttonInstallOrRemoveRobot, "Установить/убрать робота с карты");
-            this.buttonInstallOrRemoveRobot.UseVisualStyleBackColor = true;
-            this.buttonInstallOrRemoveRobot.Click += new System.EventHandler(this.buttonInstallOrRemoveRobot_Click);
+            this.buttonSettingsClose.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettingsClose.Image")));
+            this.buttonSettingsClose.Location = new System.Drawing.Point(548, 3);
+            this.buttonSettingsClose.Name = "buttonSettingsClose";
+            this.buttonSettingsClose.Size = new System.Drawing.Size(40, 40);
+            this.buttonSettingsClose.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.buttonSettingsClose, "Закрыть панель настроек");
+            this.buttonSettingsClose.UseVisualStyleBackColor = true;
+            this.buttonSettingsClose.Click += new System.EventHandler(this.buttonSettingsClose_Click);
             // 
-            // buttonMapSelection
+            // buttonSettingsSave
             // 
-            this.buttonMapSelection.Image = ((System.Drawing.Image)(resources.GetObject("buttonMapSelection.Image")));
-            this.buttonMapSelection.Location = new System.Drawing.Point(711, 9);
-            this.buttonMapSelection.Name = "buttonMapSelection";
-            this.buttonMapSelection.Size = new System.Drawing.Size(65, 70);
-            this.buttonMapSelection.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.buttonMapSelection, "Перейти на панель выбора карт");
-            this.buttonMapSelection.UseVisualStyleBackColor = true;
-            this.buttonMapSelection.Click += new System.EventHandler(this.buttonMapSelection_Click);
+            this.buttonSettingsSave.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettingsSave.Image")));
+            this.buttonSettingsSave.Location = new System.Drawing.Point(502, 3);
+            this.buttonSettingsSave.Name = "buttonSettingsSave";
+            this.buttonSettingsSave.Size = new System.Drawing.Size(40, 40);
+            this.buttonSettingsSave.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.buttonSettingsSave, "Сохранить настройки");
+            this.buttonSettingsSave.UseVisualStyleBackColor = true;
+            this.buttonSettingsSave.Click += new System.EventHandler(this.buttonSettingsSave_Click);
             // 
-            // buttonSave
+            // buttonSetColor
             // 
-            this.buttonSave.Image = ((System.Drawing.Image)(resources.GetObject("buttonSave.Image")));
-            this.buttonSave.Location = new System.Drawing.Point(640, 9);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(65, 70);
-            this.buttonSave.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.buttonSave, "Сохранить карту");
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.buttonSetColor.Image = ((System.Drawing.Image)(resources.GetObject("buttonSetColor.Image")));
+            this.buttonSetColor.Location = new System.Drawing.Point(14, 31);
+            this.buttonSetColor.Name = "buttonSetColor";
+            this.buttonSetColor.Size = new System.Drawing.Size(40, 40);
+            this.buttonSetColor.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.buttonSetColor, "Определить цвет");
+            this.buttonSetColor.UseVisualStyleBackColor = true;
+            this.buttonSetColor.Click += new System.EventHandler(this.buttonSetColor_Click);
+            // 
+            // panelMapSelection
+            // 
+            this.panelMapSelection.Controls.Add(this.buttonLoadMapIntoRobot);
+            this.panelMapSelection.Controls.Add(this.labelMapSelect);
+            this.panelMapSelection.Controls.Add(this.SelectTable);
+            this.panelMapSelection.Controls.Add(this.buttonDeleteMap);
+            this.panelMapSelection.Controls.Add(this.buttonMapEdit);
+            this.panelMapSelection.Controls.Add(this.buttonCreateMap);
+            this.panelMapSelection.Location = new System.Drawing.Point(10, 10);
+            this.panelMapSelection.Name = "panelMapSelection";
+            this.panelMapSelection.Size = new System.Drawing.Size(492, 88);
+            this.panelMapSelection.TabIndex = 2;
+            // 
+            // labelMapSelect
+            // 
+            this.labelMapSelect.AutoSize = true;
+            this.labelMapSelect.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.labelMapSelect.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelMapSelect.Location = new System.Drawing.Point(7, 22);
+            this.labelMapSelect.Name = "labelMapSelect";
+            this.labelMapSelect.Size = new System.Drawing.Size(113, 17);
+            this.labelMapSelect.TabIndex = 1;
+            this.labelMapSelect.Text = "Выберете карту:";
+            // 
+            // SelectTable
+            // 
+            this.SelectTable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SelectTable.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SelectTable.FormattingEnabled = true;
+            this.SelectTable.Location = new System.Drawing.Point(10, 42);
+            this.SelectTable.Name = "SelectTable";
+            this.SelectTable.Size = new System.Drawing.Size(167, 23);
+            this.SelectTable.TabIndex = 0;
+            this.SelectTable.SelectedIndexChanged += new System.EventHandler(this.SelectTable_SelectedIndexChanged);
+            // 
+            // statusBar
+            // 
+            this.statusBar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.statusBar.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.statusBar.Location = new System.Drawing.Point(12, 107);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.statusBar.Size = new System.Drawing.Size(238, 304);
+            this.statusBar.TabIndex = 3;
+            this.statusBar.Text = "";
+            // 
+            // panelUploadRobot
+            // 
+            this.panelUploadRobot.Controls.Add(this.buttonBreakConnection);
+            this.panelUploadRobot.Controls.Add(this.buttonMapSelection2);
+            this.panelUploadRobot.Controls.Add(this.buttonStop);
+            this.panelUploadRobot.Controls.Add(this.buttonStartWay);
+            this.panelUploadRobot.Controls.Add(this.buttonSendWayRobot);
+            this.panelUploadRobot.Controls.Add(this.buttonConnect);
+            this.panelUploadRobot.Controls.Add(this.labelComPortNumber);
+            this.panelUploadRobot.Controls.Add(this.buttonGetDirections);
+            this.panelUploadRobot.Controls.Add(this.buttonComPortRefresh);
+            this.panelUploadRobot.Controls.Add(this.ComPortNumber);
+            this.panelUploadRobot.Location = new System.Drawing.Point(10, 10);
+            this.panelUploadRobot.Name = "panelUploadRobot";
+            this.panelUploadRobot.Size = new System.Drawing.Size(549, 88);
+            this.panelUploadRobot.TabIndex = 4;
+            this.panelUploadRobot.Visible = false;
+            // 
+            // labelComPortNumber
+            // 
+            this.labelComPortNumber.AutoSize = true;
+            this.labelComPortNumber.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.labelComPortNumber.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelComPortNumber.Location = new System.Drawing.Point(14, 13);
+            this.labelComPortNumber.Name = "labelComPortNumber";
+            this.labelComPortNumber.Size = new System.Drawing.Size(124, 17);
+            this.labelComPortNumber.TabIndex = 7;
+            this.labelComPortNumber.Text = "Номер Com порта:";
+            // 
+            // ComPortNumber
+            // 
+            this.ComPortNumber.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComPortNumber.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            this.ComPortNumber.FormattingEnabled = true;
+            this.ComPortNumber.Location = new System.Drawing.Point(17, 33);
+            this.ComPortNumber.Name = "ComPortNumber";
+            this.ComPortNumber.Size = new System.Drawing.Size(87, 23);
+            this.ComPortNumber.TabIndex = 0;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 300;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // panelSettings
+            // 
+            this.panelSettings.BackColor = System.Drawing.SystemColors.Control;
+            this.panelSettings.Controls.Add(this.labelSettings);
+            this.panelSettings.Controls.Add(this.buttonSettingsSave);
+            this.panelSettings.Controls.Add(this.buttonSettingsClose);
+            this.panelSettings.Controls.Add(this.tabControl1);
+            this.panelSettings.Location = new System.Drawing.Point(296, 166);
+            this.panelSettings.Name = "panelSettings";
+            this.panelSettings.Size = new System.Drawing.Size(591, 229);
+            this.panelSettings.TabIndex = 6;
+            this.panelSettings.Visible = false;
+            // 
+            // labelSettings
+            // 
+            this.labelSettings.AutoSize = true;
+            this.labelSettings.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSettings.Location = new System.Drawing.Point(208, 10);
+            this.labelSettings.Name = "labelSettings";
+            this.labelSettings.Size = new System.Drawing.Size(105, 22);
+            this.labelSettings.TabIndex = 3;
+            this.labelSettings.Text = "Настройки";
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tabControl1.Location = new System.Drawing.Point(3, 46);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(585, 176);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.labelSetColor);
+            this.tabPage1.Controls.Add(this.buttonSetColor);
+            this.tabPage1.Controls.Add(this.labelTransparency);
+            this.tabPage1.Controls.Add(this.trackBarTransparency);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(577, 148);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Цвет кнопок";
+            // 
+            // labelSetColor
+            // 
+            this.labelSetColor.AutoSize = true;
+            this.labelSetColor.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            this.labelSetColor.Location = new System.Drawing.Point(11, 11);
+            this.labelSetColor.Name = "labelSetColor";
+            this.labelSetColor.Size = new System.Drawing.Size(118, 17);
+            this.labelSetColor.TabIndex = 3;
+            this.labelSetColor.Text = "Определить цвет:";
+            // 
+            // labelTransparency
+            // 
+            this.labelTransparency.AutoSize = true;
+            this.labelTransparency.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTransparency.Location = new System.Drawing.Point(11, 83);
+            this.labelTransparency.Name = "labelTransparency";
+            this.labelTransparency.Size = new System.Drawing.Size(98, 17);
+            this.labelTransparency.TabIndex = 1;
+            this.labelTransparency.Text = "Прозрачность:";
+            // 
+            // trackBarTransparency
+            // 
+            this.trackBarTransparency.BackColor = System.Drawing.SystemColors.Control;
+            this.trackBarTransparency.Location = new System.Drawing.Point(3, 103);
+            this.trackBarTransparency.Maximum = 255;
+            this.trackBarTransparency.Name = "trackBarTransparency";
+            this.trackBarTransparency.Size = new System.Drawing.Size(250, 45);
+            this.trackBarTransparency.TabIndex = 0;
+            this.trackBarTransparency.TickFrequency = 0;
+            this.trackBarTransparency.Scroll += new System.EventHandler(this.trackBarTransparency_Scroll);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.labelCheckConnection);
+            this.tabPage2.Controls.Add(this.buttonCheckConnection);
+            this.tabPage2.Controls.Add(this.labelConnectingDatabase);
+            this.tabPage2.Controls.Add(this.textBoxConnectingDatabase);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(577, 148);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Подключение к БД";
+            // 
+            // labelCheckConnection
+            // 
+            this.labelCheckConnection.AutoSize = true;
+            this.labelCheckConnection.Location = new System.Drawing.Point(6, 99);
+            this.labelCheckConnection.Name = "labelCheckConnection";
+            this.labelCheckConnection.Size = new System.Drawing.Size(153, 16);
+            this.labelCheckConnection.TabIndex = 3;
+            this.labelCheckConnection.Text = "Проверить подключение:";
+            // 
+            // buttonCheckConnection
+            // 
+            this.buttonCheckConnection.Image = ((System.Drawing.Image)(resources.GetObject("buttonCheckConnection.Image")));
+            this.buttonCheckConnection.Location = new System.Drawing.Point(159, 86);
+            this.buttonCheckConnection.Name = "buttonCheckConnection";
+            this.buttonCheckConnection.Size = new System.Drawing.Size(40, 40);
+            this.buttonCheckConnection.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.buttonCheckConnection, "Проверить подключение к БД");
+            this.buttonCheckConnection.UseVisualStyleBackColor = true;
+            this.buttonCheckConnection.Click += new System.EventHandler(this.buttonCheckConnection_Click);
+            // 
+            // labelConnectingDatabase
+            // 
+            this.labelConnectingDatabase.AutoSize = true;
+            this.labelConnectingDatabase.Location = new System.Drawing.Point(7, 25);
+            this.labelConnectingDatabase.Name = "labelConnectingDatabase";
+            this.labelConnectingDatabase.Size = new System.Drawing.Size(177, 16);
+            this.labelConnectingDatabase.TabIndex = 1;
+            this.labelConnectingDatabase.Text = "Подключение к базе данных:";
+            // 
+            // textBoxConnectingDatabase
+            // 
+            this.textBoxConnectingDatabase.Location = new System.Drawing.Point(3, 44);
+            this.textBoxConnectingDatabase.Name = "textBoxConnectingDatabase";
+            this.textBoxConnectingDatabase.Size = new System.Drawing.Size(565, 23);
+            this.textBoxConnectingDatabase.TabIndex = 0;
             // 
             // Form1
             // 
@@ -612,6 +807,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1167, 597);
+            this.Controls.Add(this.panelSettings);
+            this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.panelUploadRobot);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.panelMapSelection);
@@ -631,6 +828,14 @@
             this.panelMapSelection.PerformLayout();
             this.panelUploadRobot.ResumeLayout(false);
             this.panelUploadRobot.PerformLayout();
+            this.panelSettings.ResumeLayout(false);
+            this.panelSettings.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarTransparency)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -673,7 +878,7 @@
         private System.Windows.Forms.Panel panelUploadRobot;
         private System.Windows.Forms.ComboBox ComPortNumber;
         private System.Windows.Forms.Button buttonComPortRefresh;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelComPortNumber;
         private System.Windows.Forms.Button buttonMapSelection2;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.Button buttonStartWay;
@@ -681,6 +886,23 @@
         private System.Windows.Forms.Button buttonConnect;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button buttonBreakConnection;
+        private System.Windows.Forms.Button buttonSettings;
+        private System.Windows.Forms.Panel panelSettings;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button buttonSettingsSave;
+        private System.Windows.Forms.Button buttonSettingsClose;
+        private System.Windows.Forms.Label labelSettings;
+        private System.Windows.Forms.TrackBar trackBarTransparency;
+        private System.Windows.Forms.Button buttonSetColor;
+        private System.Windows.Forms.Label labelTransparency;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.Label labelSetColor;
+        private System.Windows.Forms.Label labelConnectingDatabase;
+        private System.Windows.Forms.TextBox textBoxConnectingDatabase;
+        private System.Windows.Forms.Label labelCheckConnection;
+        private System.Windows.Forms.Button buttonCheckConnection;
     }
 }
 
