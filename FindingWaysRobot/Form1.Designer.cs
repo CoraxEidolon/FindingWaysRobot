@@ -70,6 +70,7 @@
             this.buttonSettingsClose = new System.Windows.Forms.Button();
             this.buttonSettingsSave = new System.Windows.Forms.Button();
             this.buttonSetColor = new System.Windows.Forms.Button();
+            this.buttonCheckConnection = new System.Windows.Forms.Button();
             this.panelMapSelection = new System.Windows.Forms.Panel();
             this.labelMapSelect = new System.Windows.Forms.Label();
             this.SelectTable = new System.Windows.Forms.ComboBox();
@@ -87,7 +88,6 @@
             this.trackBarTransparency = new System.Windows.Forms.TrackBar();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.labelCheckConnection = new System.Windows.Forms.Label();
-            this.buttonCheckConnection = new System.Windows.Forms.Button();
             this.labelConnectingDatabase = new System.Windows.Forms.Label();
             this.textBoxConnectingDatabase = new System.Windows.Forms.TextBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
@@ -398,6 +398,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 5;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView1.Size = new System.Drawing.Size(52, 53);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
@@ -581,6 +582,17 @@
             this.buttonSetColor.UseVisualStyleBackColor = true;
             this.buttonSetColor.Click += new System.EventHandler(this.buttonSetColor_Click);
             // 
+            // buttonCheckConnection
+            // 
+            this.buttonCheckConnection.Image = ((System.Drawing.Image)(resources.GetObject("buttonCheckConnection.Image")));
+            this.buttonCheckConnection.Location = new System.Drawing.Point(159, 86);
+            this.buttonCheckConnection.Name = "buttonCheckConnection";
+            this.buttonCheckConnection.Size = new System.Drawing.Size(40, 40);
+            this.buttonCheckConnection.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.buttonCheckConnection, "Проверить подключение к БД");
+            this.buttonCheckConnection.UseVisualStyleBackColor = true;
+            this.buttonCheckConnection.Click += new System.EventHandler(this.buttonCheckConnection_Click);
+            // 
             // panelMapSelection
             // 
             this.panelMapSelection.Controls.Add(this.buttonLoadMapIntoRobot);
@@ -668,7 +680,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 300;
+            this.timer1.Interval = 600;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // panelSettings
@@ -773,17 +785,6 @@
             this.labelCheckConnection.TabIndex = 3;
             this.labelCheckConnection.Text = "Проверить подключение:";
             // 
-            // buttonCheckConnection
-            // 
-            this.buttonCheckConnection.Image = ((System.Drawing.Image)(resources.GetObject("buttonCheckConnection.Image")));
-            this.buttonCheckConnection.Location = new System.Drawing.Point(159, 86);
-            this.buttonCheckConnection.Name = "buttonCheckConnection";
-            this.buttonCheckConnection.Size = new System.Drawing.Size(40, 40);
-            this.buttonCheckConnection.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.buttonCheckConnection, "Проверить подключение к БД");
-            this.buttonCheckConnection.UseVisualStyleBackColor = true;
-            this.buttonCheckConnection.Click += new System.EventHandler(this.buttonCheckConnection_Click);
-            // 
             // labelConnectingDatabase
             // 
             this.labelConnectingDatabase.AutoSize = true;
@@ -817,7 +818,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Finding ways robot";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelCreateEditMap.ResumeLayout(false);
             this.panelCreateEditMap.PerformLayout();

@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>RobotRun.ico</ApplicationIcon>
+    <ApplicationIcon>RobotWalk.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Npgsql">
@@ -127,6 +127,7 @@
     <None Include="Resources\robotConnect.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="RobotWalk.ico" />
     <None Include="Resources\stop.png" />
     <None Include="Resources\stopLock.png" />
     <None Include="Resources\startWay.png" />

@@ -119,10 +119,11 @@ namespace FindingWaysRobot
         /* Метод производит запросы которые возвращают значения */
         public static bool checkСonnection()
         {
-            NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString);
+          
             bool OK = false;
             try
             {
+                NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString);
                 npgSqlConnection.Open();
                 npgSqlConnection.Close();
                 OK = true;

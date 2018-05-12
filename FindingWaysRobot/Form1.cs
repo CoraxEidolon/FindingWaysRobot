@@ -615,9 +615,34 @@ namespace FindingWaysRobot
 
             }
         }
+        /* Чтение данных */
         private void DataReceivedHandler(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            string POT = SerialPort.ReadLine();
+            SerialPort sp = (SerialPort)sender;
+            string indata = sp.ReadExisting();
+            if (indata == "R")
+            {
+     
+                statusBar.Invoke((MethodInvoker)delegate
+                {
+                    statusBar.AppendText("● Робот успешно принял маршрут\n");
+                    buttonStartWay.Enabled = true;
+                    buttonStartWay.Image = Properties.Resources.startWay;
+                });
+                      
+            }
+            else if (indata == "S")
+            {
+                statusBar.Invoke((MethodInvoker)delegate
+                {
+                    statusBar.AppendText("‼ Робот обнаружил препятствие на пути. Дальнейшее движение невозможно.\n");
+                    buttonStop_Click(sender, e);
+                });
+            }
+
+
+
+
         }
         private delegate void LineReceivedEvent(string POT);
 
@@ -628,9 +653,12 @@ namespace FindingWaysRobot
             {
                 if (SerialPort.IsOpen == true)
                 {
-                    buttonStartWay.Enabled = true;
-                    buttonStartWay.Image = Properties.Resources.startWay;
+                   
                     statusBar.AppendText("● Маршрут отправлен роботу \n");
+                    for (int i=0; i< GLOBAL_robotRoute.Count; i++)
+                    {
+                        SerialPort.Write(Convert.ToString(GLOBAL_robotRoute[i]));
+                    }
                 }
                 else
                 {
@@ -647,6 +675,7 @@ namespace FindingWaysRobot
         private void buttonStartWay_Click(object sender, EventArgs e)
         {
             AStar.robotGo = true;
+            SerialPort.Write("G");
             buttonSendWayRobot.Image = Properties.Resources.LoadInRobotLock;
             buttonSendWayRobot.Enabled = false;
 
@@ -821,22 +850,11 @@ namespace FindingWaysRobot
                 MapEdit.installRobot = true;
                 MapEdit.installFinish = false;
                 imageButtonRobotFinish();
-                //Положение кнопок 
-                AStar.robotGo = false;
-                buttonSendWayRobot.Image = Properties.Resources.LoadInRobotLock;
-                buttonSendWayRobot.Enabled = false;
+                buttonMapSelection2_Click(sender, e);
+                buttonMapEdit_Click(sender, e);
 
-                buttonMapSelection2.Image = Properties.Resources.choices;
-                buttonMapSelection2.Enabled = true;
 
-                buttonGetDirections.Image = Properties.Resources.destination;
-                buttonGetDirections.Enabled = true;
 
-                buttonStop.Image = Properties.Resources.stopLock;
-                buttonStop.Enabled = false;
-
-                buttonStartWay.Image = Properties.Resources.startWayLock;
-                buttonStartWay.Enabled = false;
             }
 
         }//timer1_Tick
@@ -913,6 +931,8 @@ namespace FindingWaysRobot
         private void buttonSettings_Click(object sender, EventArgs e)
         {
             panelSettings.Visible = true;
+            trackBarTransparency.Value = Properties.Settings.Default.Transparency;
+            labelTransparency.Text = "Прозрачность: " + trackBarTransparency.Value;
         }
 
         /* Закрыть окно настроек */
@@ -921,6 +941,8 @@ namespace FindingWaysRobot
             panelSettings.Visible = false;
             Properties.Settings.Default.Reload();
             SetColorButton(this.Controls);
+            textBoxConnectingDatabase.Text= Properties.Settings.Default.connectionDatabase;
+            DataBase.connectionString = Properties.Settings.Default.connectionDatabase;
         }
 
         /* Определяет цвет кнопки */
