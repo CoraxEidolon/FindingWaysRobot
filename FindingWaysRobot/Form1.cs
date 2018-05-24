@@ -131,7 +131,7 @@ namespace FindingWaysRobot
         /* Сохраняет карту */
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (DataBase.checkСonnection() == true)
+            if (DataBase.checkСonnection(DataBase.connectionString) == true)
             {
                 DataBase DB = new DataBase();
                 if (DB.verificationMap(textBoxMapName.Text) == true)
@@ -990,9 +990,8 @@ namespace FindingWaysRobot
         /* Проверка подключения к БД */
         private void buttonCheckConnection_Click(object sender, EventArgs e)
         {
-            DataBase.connectionString = textBoxConnectingDatabase.Text;
 
-            if (DataBase.checkСonnection() == true)
+            if (DataBase.checkСonnection(textBoxConnectingDatabase.Text) == true)
             {
                 statusBar.SelectionColor = Color.Green;
                 statusBar.AppendText("● Подключение к БД корректно \n");

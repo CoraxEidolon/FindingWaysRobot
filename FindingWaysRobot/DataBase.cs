@@ -117,13 +117,13 @@ namespace FindingWaysRobot
 
 
         /* Метод проверяет подключение к БД */
-        public static bool checkСonnection()
+        public static bool checkСonnection(string connectionTest)
         {
           
             bool OK = false;
             try
             {
-                NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString);
+                NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionTest);
                 npgSqlConnection.Open();
                 npgSqlConnection.Close();
                 OK = true;
