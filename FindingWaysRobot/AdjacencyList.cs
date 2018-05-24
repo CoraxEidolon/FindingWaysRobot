@@ -15,9 +15,6 @@ namespace FindingWaysRobot
         public bool visit;//Посещена вершина или нет
         public int vertexLabels;//Мектка вершины
 
-
-
-
         public AdjacencyList()
         {
             for (int i=0; i<4; i++)

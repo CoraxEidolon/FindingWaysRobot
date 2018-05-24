@@ -116,7 +116,7 @@ namespace FindingWaysRobot
         }
 
 
-        /* Метод производит запросы которые возвращают значения */
+        /* Метод проверяет подключение к БД */
         public static bool checkСonnection()
         {
           

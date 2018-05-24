@@ -481,7 +481,7 @@ namespace FindingWaysRobot
             }//i
 
             int[,] way= A.AstarAlgoritm(map, XStar, YStart, XFinish, YFinish);
-            int examp = way.GetHashCode();
+
             if (way.GetLength(0) > 0)
             {
                 GLOBAL_way = new int[way.GetLength(0), 2]; // массив пути X и Y
@@ -495,66 +495,71 @@ namespace FindingWaysRobot
                     GLOBAL_way[i, 0] = way[i, 0];
                     GLOBAL_way[i, 1] = way[i, 1];
                 }
-            }
 
-            GLOBAL_robotRoute.Clear();
 
-            int current_X = YStart;
-            int current_Y = XStar ;
-            int currentPosition = RobotPosition;
+                GLOBAL_robotRoute.Clear();
 
-            for (int i = GLOBAL_way.GetLength(0)-1; i >= 0; i--)
-            {
-                if (currentPosition == 2)
-                {
-                    if (current_X + 1 == GLOBAL_way[i,0]) { GLOBAL_robotRoute.Add(6); GLOBAL_robotRoute.Add(2); currentPosition = 6; current_X++; continue; }
-                    if (current_X - 1 == GLOBAL_way[i,0]) { GLOBAL_robotRoute.Add(4); GLOBAL_robotRoute.Add(2); currentPosition = 4; current_X--; continue; }
-                    if (current_Y + 1 == GLOBAL_way[i,1]) { GLOBAL_robotRoute.Add(0); GLOBAL_robotRoute.Add(2); currentPosition = 8; current_Y++; continue; }
-                    if (current_Y - 1 == GLOBAL_way[i,1]) { GLOBAL_robotRoute.Add(2); current_Y--; continue; }
-                }
-                if (currentPosition == 4)
-                {
-                    if (current_X + 1 == GLOBAL_way[i,0]) { GLOBAL_robotRoute.Add(0); GLOBAL_robotRoute.Add(2); currentPosition = 6; current_X++; continue; }
-                    if (current_X - 1 == GLOBAL_way[i,0]) { GLOBAL_robotRoute.Add(2); current_X--; continue; }
-                    if (current_Y + 1 == GLOBAL_way[i,1]) { GLOBAL_robotRoute.Add(4); GLOBAL_robotRoute.Add(2); currentPosition = 8; current_Y++; continue; }
-                    if (current_Y - 1 == GLOBAL_way[i,1]) { GLOBAL_robotRoute.Add(6); GLOBAL_robotRoute.Add(2); currentPosition = 2; current_Y--; continue; }
-                }
-                if (currentPosition == 6)
-                {
-                    if (current_X + 1 == GLOBAL_way[i,0]) { GLOBAL_robotRoute.Add(2); current_X++; continue; }
-                    if (current_X - 1 == GLOBAL_way[i,0]) { GLOBAL_robotRoute.Add(0); GLOBAL_robotRoute.Add(2); currentPosition = 4; current_X--; continue; }
-                    if (current_Y + 1 == GLOBAL_way[i,1]) { GLOBAL_robotRoute.Add(6); GLOBAL_robotRoute.Add(2); currentPosition = 8; current_Y++; continue; }
-                    if (current_Y - 1 == GLOBAL_way[i,1]) { GLOBAL_robotRoute.Add(4); GLOBAL_robotRoute.Add(2); currentPosition = 2; current_Y--; continue; }
-                }
-                if (currentPosition == 8)
-                {
-                    if (current_X + 1 == GLOBAL_way[i,0]) { GLOBAL_robotRoute.Add(4); GLOBAL_robotRoute.Add(2); currentPosition = 6; current_X++; continue; }
-                    if (current_X - 1 == GLOBAL_way[i,0]) { GLOBAL_robotRoute.Add(6); GLOBAL_robotRoute.Add(2); currentPosition = 4; current_X--; continue; }
-                    if (current_Y + 1 == GLOBAL_way[i,1]) { GLOBAL_robotRoute.Add(2); current_Y++; continue; }
-                    if (current_Y - 1 == GLOBAL_way[i,1]) { GLOBAL_robotRoute.Add(0); GLOBAL_robotRoute.Add(2); currentPosition = 2; current_Y--; continue; }
-                }
-            }//for
+                int current_X = YStart;
+                int current_Y = XStar;
+                int currentPosition = RobotPosition;
 
-            GLOBAL_buf_timerPlus = 0;
-            GLOBAL_X_timer = YStart;
-            GLOBAL_Y_timer = XStar;
-            GLOBAL_X_finish_stop = YFinish;
-            GLOBAL_Y_finish_stop = XFinish;
-            GLOBAL_initialPositionRobot_timer = RobotPosition;
-            try
-            {
-                if (SerialPort.IsOpen == true)
+                for (int i = GLOBAL_way.GetLength(0) - 1; i >= 0; i--)
                 {
-                    buttonSendWayRobot.Image = Properties.Resources.LoadInRobot;
-                    buttonSendWayRobot.Enabled = true;
-                } else
+                    if (currentPosition == 2)
+                    {
+                        if (current_X + 1 == GLOBAL_way[i, 0]) { GLOBAL_robotRoute.Add(6); GLOBAL_robotRoute.Add(2); currentPosition = 6; current_X++; continue; }
+                        if (current_X - 1 == GLOBAL_way[i, 0]) { GLOBAL_robotRoute.Add(4); GLOBAL_robotRoute.Add(2); currentPosition = 4; current_X--; continue; }
+                        if (current_Y + 1 == GLOBAL_way[i, 1]) { GLOBAL_robotRoute.Add(0); GLOBAL_robotRoute.Add(2); currentPosition = 8; current_Y++; continue; }
+                        if (current_Y - 1 == GLOBAL_way[i, 1]) { GLOBAL_robotRoute.Add(2); current_Y--; continue; }
+                    }
+                    if (currentPosition == 4)
+                    {
+                        if (current_X + 1 == GLOBAL_way[i, 0]) { GLOBAL_robotRoute.Add(0); GLOBAL_robotRoute.Add(2); currentPosition = 6; current_X++; continue; }
+                        if (current_X - 1 == GLOBAL_way[i, 0]) { GLOBAL_robotRoute.Add(2); current_X--; continue; }
+                        if (current_Y + 1 == GLOBAL_way[i, 1]) { GLOBAL_robotRoute.Add(4); GLOBAL_robotRoute.Add(2); currentPosition = 8; current_Y++; continue; }
+                        if (current_Y - 1 == GLOBAL_way[i, 1]) { GLOBAL_robotRoute.Add(6); GLOBAL_robotRoute.Add(2); currentPosition = 2; current_Y--; continue; }
+                    }
+                    if (currentPosition == 6)
+                    {
+                        if (current_X + 1 == GLOBAL_way[i, 0]) { GLOBAL_robotRoute.Add(2); current_X++; continue; }
+                        if (current_X - 1 == GLOBAL_way[i, 0]) { GLOBAL_robotRoute.Add(0); GLOBAL_robotRoute.Add(2); currentPosition = 4; current_X--; continue; }
+                        if (current_Y + 1 == GLOBAL_way[i, 1]) { GLOBAL_robotRoute.Add(6); GLOBAL_robotRoute.Add(2); currentPosition = 8; current_Y++; continue; }
+                        if (current_Y - 1 == GLOBAL_way[i, 1]) { GLOBAL_robotRoute.Add(4); GLOBAL_robotRoute.Add(2); currentPosition = 2; current_Y--; continue; }
+                    }
+                    if (currentPosition == 8)
+                    {
+                        if (current_X + 1 == GLOBAL_way[i, 0]) { GLOBAL_robotRoute.Add(4); GLOBAL_robotRoute.Add(2); currentPosition = 6; current_X++; continue; }
+                        if (current_X - 1 == GLOBAL_way[i, 0]) { GLOBAL_robotRoute.Add(6); GLOBAL_robotRoute.Add(2); currentPosition = 4; current_X--; continue; }
+                        if (current_Y + 1 == GLOBAL_way[i, 1]) { GLOBAL_robotRoute.Add(2); current_Y++; continue; }
+                        if (current_Y - 1 == GLOBAL_way[i, 1]) { GLOBAL_robotRoute.Add(0); GLOBAL_robotRoute.Add(2); currentPosition = 2; current_Y--; continue; }
+                    }
+                }//for
+
+                GLOBAL_buf_timerPlus = 0;
+                GLOBAL_X_timer = YStart;
+                GLOBAL_Y_timer = XStar;
+                GLOBAL_X_finish_stop = YFinish;
+                GLOBAL_Y_finish_stop = XFinish;
+                GLOBAL_initialPositionRobot_timer = RobotPosition;
+                try
+                {
+                    if (SerialPort.IsOpen == true)
+                    {
+                        buttonSendWayRobot.Image = Properties.Resources.LoadInRobot;
+                        buttonSendWayRobot.Enabled = true;
+                    }
+                    else
+                    {
+                        statusBar.AppendText("● Отсутствует соединение с каким либо портом \n");
+                    }
+                }
+                catch
                 {
                     statusBar.AppendText("● Отсутствует соединение с каким либо портом \n");
                 }
-            } catch
-            {
-                statusBar.AppendText("● Отсутствует соединение с каким либо портом \n");
-            }
+
+            }//Если путь построен
+
         }//buttonGetDirections
 
         /* Очищает карту от цвета пути*/
@@ -594,7 +599,6 @@ namespace FindingWaysRobot
         /* Установить соединение с COM портом */
         private void buttonConnect_Click(object sender, EventArgs e)
         {
-
             try
             {
                 SerialPort = new SerialPort(Convert.ToString(ComPortNumber.SelectedItem));
@@ -611,11 +615,12 @@ namespace FindingWaysRobot
             }
             catch
             {
-                statusBar.AppendText("● Не удалось выполнить соединение c" + Convert.ToString(ComPortNumber.SelectedItem) + "\n");
+                statusBar.AppendText("● Не удалось выполнить соединение c " + Convert.ToString(ComPortNumber.SelectedItem) + "\n");
 
             }
         }
-        /* Чтение данных */
+
+        /* Чтение данных их COM  порта*/
         private void DataReceivedHandler(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender;
@@ -639,10 +644,6 @@ namespace FindingWaysRobot
                     buttonStop_Click(sender, e);
                 });
             }
-
-
-
-
         }
         private delegate void LineReceivedEvent(string POT);
 
@@ -694,7 +695,7 @@ namespace FindingWaysRobot
             timer1.Enabled = true;
         }
      
-        /* Таймер */
+        /* Таймер. Движение робота по карте */
         private void timer1_Tick(object sender, EventArgs e)
         {
             MapEdit M = new MapEdit();
@@ -953,13 +954,13 @@ namespace FindingWaysRobot
             SetColorButton(this.Controls);
         }
 
+        /* Ползунок прозрачности */
         private void trackBarTransparency_Scroll(object sender, EventArgs e)
         {
             labelTransparency.Text = "Прозрачность: " + trackBarTransparency.Value;
             Properties.Settings.Default.Transparency = trackBarTransparency.Value;
             SetColorButton(this.Controls);
         }
-
 
         /* Определяет цвет ВСЕХ кнопок */
         private void SetColorButton(Control.ControlCollection control)
@@ -977,7 +978,6 @@ namespace FindingWaysRobot
             }
         }
 
-
         /*Сохранить настройки*/
         private void buttonSettingsSave_Click(object sender, EventArgs e)
         {
@@ -987,6 +987,7 @@ namespace FindingWaysRobot
             statusBar.AppendText("● Настройки сохранены \n");
         }
 
+        /* Проверка подключения к БД */
         private void buttonCheckConnection_Click(object sender, EventArgs e)
         {
             DataBase.connectionString = textBoxConnectingDatabase.Text;
