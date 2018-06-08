@@ -58,5 +58,125 @@ namespace FindingWaysRobot.Properties {
                 this["connectionDatabase"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public int directMovement {
+            get {
+                return ((int)(this["directMovement"]));
+            }
+            set {
+                this["directMovement"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public int turnLeft {
+            get {
+                return ((int)(this["turnLeft"]));
+            }
+            set {
+                this["turnLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public int turnRight {
+            get {
+                return ((int)(this["turnRight"]));
+            }
+            set {
+                this["turnRight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("31")]
+        public int CellSize {
+            get {
+                return ((int)(this["CellSize"]));
+            }
+            set {
+                this["CellSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000")]
+        public int directMovement2 {
+            get {
+                return ((int)(this["directMovement2"]));
+            }
+            set {
+                this["directMovement2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000")]
+        public int turnLeft2 {
+            get {
+                return ((int)(this["turnLeft2"]));
+            }
+            set {
+                this["turnLeft2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2000")]
+        public int turnRight2 {
+            get {
+                return ((int)(this["turnRight2"]));
+            }
+            set {
+                this["turnRight2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3000")]
+        public int directMovement3 {
+            get {
+                return ((int)(this["directMovement3"]));
+            }
+            set {
+                this["directMovement3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3000")]
+        public int turnLeft3 {
+            get {
+                return ((int)(this["turnLeft3"]));
+            }
+            set {
+                this["turnLeft3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3000")]
+        public int turnRight3 {
+            get {
+                return ((int)(this["turnRight3"]));
+            }
+            set {
+                this["turnRight3"] = value;
+            }
+        }
     }
 }

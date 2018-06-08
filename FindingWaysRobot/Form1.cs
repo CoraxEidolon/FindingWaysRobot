@@ -20,7 +20,7 @@ namespace FindingWaysRobot
             InitializeComponent();
         }
 
-        int GLOBAL_cellSize = 31; // Размер ячеек
+        int GLOBAL_cellSize = Properties.Settings.Default.CellSize; // Размер ячеек
         int[,] GLOBAL_way;
         string[] GLOBAL_robotPosition;
         List<int> GLOBAL_robotRoute = new List<int>(); // готовый маршрут робота. Глобальный, чтобы иметь к нему доступ из любого метода
@@ -32,6 +32,7 @@ namespace FindingWaysRobot
 
         int GLOBAL_X_finish_stop = 0;
         int GLOBAL_Y_finish_stop = 0;
+        bool isDown;
 
 
         SerialPort SerialPort;//серийный порт
@@ -138,7 +139,7 @@ namespace FindingWaysRobot
                 {
                     if (DataBase.editTable == false)
                     {
-                        DB.InquiryNOReturnValue("create table " + textBoxMapName.Text + " (map varchar(100));");
+                        DB.InquiryNOReturnValue("create table " + textBoxMapName.Text + " (map varchar(10));");
                     }
                     else
                     {
@@ -601,6 +602,7 @@ namespace FindingWaysRobot
         {
             try
             {
+                statusBar.AppendText("● Установка соединения с портом " + Convert.ToString(ComPortNumber.SelectedItem) + "..." + "\n");
                 SerialPort = new SerialPort(Convert.ToString(ComPortNumber.SelectedItem));
                 SerialPort.BaudRate = 115200;
                 SerialPort.Parity = Parity.None;
@@ -608,9 +610,10 @@ namespace FindingWaysRobot
                 SerialPort.DataBits = 8;
                 SerialPort.Handshake = Handshake.None;
                 SerialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
-                statusBar.AppendText("● Установка соединения с портом " + Convert.ToString(ComPortNumber.SelectedItem) + "..." + "\n");
                 SerialPort.Open();
                 statusBar.AppendText("● Соединение c " + SerialPort.PortName + " успешно установлено " + "\n");
+                buttonManualControl.Enabled = true;
+                buttonManualControl.Image = Properties.Resources.manualControl;
 
             }
             catch
@@ -654,12 +657,13 @@ namespace FindingWaysRobot
             {
                 if (SerialPort.IsOpen == true)
                 {
-                   
+                    SerialPort.Write("W");
                     statusBar.AppendText("● Маршрут отправлен роботу \n");
                     for (int i=0; i< GLOBAL_robotRoute.Count; i++)
                     {
                         SerialPort.Write(Convert.ToString(GLOBAL_robotRoute[i]));
                     }
+                    SerialPort.Write("E");
                 }
                 else
                 {
@@ -692,6 +696,24 @@ namespace FindingWaysRobot
             buttonStartWay.Enabled = false;
             buttonStartWay.Image = Properties.Resources.startWayLock;
 
+            buttonManualControl.Enabled = false;
+            buttonManualControl.Image = Properties.Resources.manualControlLock;
+
+            if (GLOBAL_robotRoute[0] == 2)
+            {
+                timer1.Interval = Properties.Settings.Default.directMovement;
+            } else
+            if (GLOBAL_robotRoute[0] == 4)
+            {
+                timer1.Interval = Properties.Settings.Default.turnLeft;
+            } else
+            if (GLOBAL_robotRoute[0] == 6)
+            {
+                timer1.Interval = Properties.Settings.Default.turnRight;
+            } else
+            if (GLOBAL_robotRoute[0] == 0) {
+                timer1.Interval = Properties.Settings.Default.turnLeft * 2;
+            }
             timer1.Enabled = true;
         }
      
@@ -843,6 +865,31 @@ namespace FindingWaysRobot
                 dataGridView1.Rows[GLOBAL_Y_timer].Cells[GLOBAL_X_timer].Style.BackColor = Color.Orange;
             }
             GLOBAL_buf_timerPlus++;
+            if (GLOBAL_buf_timerPlus < GLOBAL_robotRoute.Count)
+            {
+                if (GLOBAL_robotRoute[GLOBAL_buf_timerPlus] == 2)
+                {
+                    timer1.Interval = Properties.Settings.Default.directMovement;
+                }
+                else 
+                if (GLOBAL_robotRoute[GLOBAL_buf_timerPlus] == 4)
+                {
+                    timer1.Interval = Properties.Settings.Default.turnLeft;
+                }
+                else          
+                if (GLOBAL_robotRoute[GLOBAL_buf_timerPlus] == 6)
+                {
+                    timer1.Interval = Properties.Settings.Default.turnRight;
+                }
+                else                  
+                if (GLOBAL_robotRoute[GLOBAL_buf_timerPlus] == 0)
+                {
+                    timer1.Interval = Properties.Settings.Default.turnLeft*2;
+                }
+
+
+            }
+
             if (GLOBAL_buf_timerPlus >= GLOBAL_robotRoute.Count)
             {
                 timer1.Enabled = false;
@@ -867,6 +914,12 @@ namespace FindingWaysRobot
             {
                 SerialPort.Close();
                 statusBar.AppendText("● Закрыто соединение с " + SerialPort.PortName + " \n");
+
+                buttonManualControl.Enabled = false;
+                buttonManualControl.Image = Properties.Resources.manualControlLock;
+
+                buttonSendWayRobot.Image = Properties.Resources.LoadInRobotLock;
+                buttonSendWayRobot.Enabled = false;
             }
             catch
             {
@@ -896,6 +949,9 @@ namespace FindingWaysRobot
             panelUploadRobot.Visible = false;
             panelMapSelection.Visible = true;
 
+            buttonManualControl.Enabled = false;
+            buttonManualControl.Image = Properties.Resources.manualControlLock;
+
             WayColorClear();
         }
 
@@ -903,7 +959,7 @@ namespace FindingWaysRobot
         private void buttonStop_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
-
+            SerialPort.Write("S");
             AStar.robotGo = false;
             buttonSendWayRobot.Image = Properties.Resources.LoadInRobotLock;
             buttonSendWayRobot.Enabled = false;
@@ -919,6 +975,9 @@ namespace FindingWaysRobot
 
             buttonStartWay.Image = Properties.Resources.startWayLock;
             buttonStartWay.Enabled = false;
+
+            buttonManualControl.Enabled = true;
+            buttonManualControl.Image = Properties.Resources.manualControl;
         }
 
         /* переход на панелт загрузки карты в робота */
@@ -931,9 +990,32 @@ namespace FindingWaysRobot
         /* Открыть окно настроек */
         private void buttonSettings_Click(object sender, EventArgs e)
         {
-            panelSettings.Visible = true;
-            trackBarTransparency.Value = Properties.Settings.Default.Transparency;
-            labelTransparency.Text = "Прозрачность: " + trackBarTransparency.Value;
+            
+
+            if (panelSettings.Visible == false)
+            {
+                panelSettings.Visible = true;
+                trackBarTransparency.Value = Properties.Settings.Default.Transparency;
+                labelTransparency.Text = "Прозрачность: " + trackBarTransparency.Value;
+
+                textBoxDirectMovementPatencyGood.Text = Convert.ToString(Properties.Settings.Default.directMovement);
+                textBoxTurnRightPatencyGood.Text = Convert.ToString(Properties.Settings.Default.turnRight);
+                textBoxTurnLeftPatencyGood.Text = Convert.ToString(Properties.Settings.Default.turnLeft);
+
+                textBoxDirectMovementPatencyMedium.Text = Convert.ToString(Properties.Settings.Default.directMovement2);
+                textBoxTurnRightPatencyMedium.Text = Convert.ToString(Properties.Settings.Default.turnRight2);
+                textBoxTurnLeftPatencyMedium.Text = Convert.ToString(Properties.Settings.Default.turnLeft2);
+
+                textBoxDirectMovementPatencyBad.Text = Convert.ToString(Properties.Settings.Default.directMovement3);
+                textBoxTurnRightPatencyBad.Text = Convert.ToString(Properties.Settings.Default.turnRight3);
+                textBoxTurnLeftPatencyBad.Text = Convert.ToString(Properties.Settings.Default.turnLeft3);
+
+
+                textBoxCellSize.Text = Convert.ToString(Properties.Settings.Default.CellSize);
+            }else
+            {
+                buttonSettingsClose_Click(sender, e);
+            }
         }
 
         /* Закрыть окно настроек */
@@ -981,6 +1063,24 @@ namespace FindingWaysRobot
         /*Сохранить настройки*/
         private void buttonSettingsSave_Click(object sender, EventArgs e)
         {
+
+            Properties.Settings.Default.directMovement = Convert.ToInt32(textBoxDirectMovementPatencyGood.Text);
+            Properties.Settings.Default.turnRight = Convert.ToInt32(textBoxTurnRightPatencyGood.Text);
+            Properties.Settings.Default.turnLeft = Convert.ToInt32(textBoxTurnLeftPatencyGood.Text);
+
+            Properties.Settings.Default.directMovement2 = Convert.ToInt32(textBoxDirectMovementPatencyMedium.Text);
+            Properties.Settings.Default.turnRight2 = Convert.ToInt32(textBoxTurnRightPatencyMedium.Text);
+            Properties.Settings.Default.turnLeft2 = Convert.ToInt32(textBoxTurnLeftPatencyMedium.Text);
+
+            Properties.Settings.Default.directMovement3 = Convert.ToInt32(textBoxDirectMovementPatencyBad.Text);
+            Properties.Settings.Default.turnRight3 = Convert.ToInt32(textBoxTurnRightPatencyBad.Text);
+            Properties.Settings.Default.turnLeft3 = Convert.ToInt32(textBoxTurnLeftPatencyBad.Text);
+
+            MapEdit.PatencyGood= Convert.ToString(Properties.Settings.Default.directMovement);
+
+
+            Properties.Settings.Default.CellSize = Convert.ToInt32(textBoxCellSize.Text);
+
             Properties.Settings.Default.connectionDatabase= textBoxConnectingDatabase.Text;
             Properties.Settings.Default.Save();
             statusBar.SelectionColor = Color.Green;
@@ -1002,6 +1102,65 @@ namespace FindingWaysRobot
                 statusBar.AppendText("● Не удалось выполнить подключение к БД \n");
 
             }
+        }
+
+        private void buttonManualControl_Click(object sender, EventArgs e)
+        {
+            AStar.robotGo = false;
+            buttonSendWayRobot.Image = Properties.Resources.LoadInRobotLock;
+            buttonSendWayRobot.Enabled = false;
+
+            buttonMapSelection2.Image = Properties.Resources.choices;
+            buttonMapSelection2.Enabled = true;
+
+            buttonGetDirections.Image = Properties.Resources.destination;
+            buttonGetDirections.Enabled = true;
+
+            buttonStop.Image = Properties.Resources.stopLock;
+            buttonStop.Enabled = false;
+
+            buttonStartWay.Image = Properties.Resources.startWayLock;
+            buttonStartWay.Enabled = false;
+            panelUploadRobot.Visible = false;
+            panelJoystick.Visible = true;
+
+            WayColorClear();
+        }
+
+        private void buttonJoystickClose_Click(object sender, EventArgs e)
+        {
+            panelUploadRobot.Visible = true;
+            panelJoystick.Visible = false;
+        }
+
+        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+            DataGridViewCell cell =  this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            cell.ToolTipText = Convert.ToString(cell.Value);
+
+
+
+
+        }
+
+        private void panelSettings_MouseDown(object sender, MouseEventArgs e)
+        {
+            isDown = true;
+        }
+
+        private void panelSettings_MouseMove(object sender, MouseEventArgs e)
+        {
+            Control c = sender as Control;
+            if (isDown)
+            {
+                c.Location = this.PointToClient(Control.MousePosition);
+            }
+        }
+
+        private void panelSettings_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDown = false;
         }
     }//form
 }//namespace

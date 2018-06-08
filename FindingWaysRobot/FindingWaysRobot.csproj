@@ -33,11 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>RobotWalk.ico</ApplicationIcon>
+    <ApplicationIcon>Robot_Logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Npgsql">
       <HintPath>.\Npgsql.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -127,6 +128,9 @@
     <None Include="Resources\robotConnect.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Robot_Logo.ico" />
+    <None Include="Resources\manualControlLock.png" />
+    <None Include="Resources\manualControl.png" />
     <Content Include="RobotWalk.ico" />
     <None Include="Resources\stop.png" />
     <None Include="Resources\stopLock.png" />

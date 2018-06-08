@@ -80,6 +80,7 @@ namespace FindingWaysRobot
         /* Проверяет таблицу на корректность */
         public bool verificationMap(string mapName)
         {
+            mapName = mapName.ToLower();
             bool OK = true;
             if (MapEdit.installRobot == false && MapEdit.installFinish == false)
             {

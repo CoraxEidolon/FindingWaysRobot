@@ -54,6 +54,12 @@
             this.numberOfСolumns = new System.Windows.Forms.NumericUpDown();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonSettingsSave = new System.Windows.Forms.Button();
+            this.buttonSettingsClose = new System.Windows.Forms.Button();
+            this.buttonSetColor = new System.Windows.Forms.Button();
+            this.buttonCheckConnection = new System.Windows.Forms.Button();
+            this.buttonSettings = new System.Windows.Forms.Button();
+            this.buttonManualControl = new System.Windows.Forms.Button();
             this.buttonBreakConnection = new System.Windows.Forms.Button();
             this.buttonMapSelection2 = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
@@ -66,11 +72,6 @@
             this.buttonDeleteMap = new System.Windows.Forms.Button();
             this.buttonMapEdit = new System.Windows.Forms.Button();
             this.buttonCreateMap = new System.Windows.Forms.Button();
-            this.buttonSettings = new System.Windows.Forms.Button();
-            this.buttonSettingsClose = new System.Windows.Forms.Button();
-            this.buttonSettingsSave = new System.Windows.Forms.Button();
-            this.buttonSetColor = new System.Windows.Forms.Button();
-            this.buttonCheckConnection = new System.Windows.Forms.Button();
             this.panelMapSelection = new System.Windows.Forms.Panel();
             this.labelMapSelect = new System.Windows.Forms.Label();
             this.SelectTable = new System.Windows.Forms.ComboBox();
@@ -83,6 +84,8 @@
             this.labelSettings = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBoxCellSize = new System.Windows.Forms.TextBox();
+            this.labelCellSize = new System.Windows.Forms.Label();
             this.labelSetColor = new System.Windows.Forms.Label();
             this.labelTransparency = new System.Windows.Forms.Label();
             this.trackBarTransparency = new System.Windows.Forms.TrackBar();
@@ -90,7 +93,37 @@
             this.labelCheckConnection = new System.Windows.Forms.Label();
             this.labelConnectingDatabase = new System.Windows.Forms.Label();
             this.textBoxConnectingDatabase = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.textBoxTurnLeftPatencyGood = new System.Windows.Forms.TextBox();
+            this.textBoxTurnRightPatencyGood = new System.Windows.Forms.TextBox();
+            this.labelTurnLeft = new System.Windows.Forms.Label();
+            this.labelTurnRight = new System.Windows.Forms.Label();
+            this.textBoxDirectMovementPatencyGood = new System.Windows.Forms.TextBox();
+            this.labelDirectMovement = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.panelJoystick = new System.Windows.Forms.Panel();
+            this.buttonJoystickClose = new System.Windows.Forms.Button();
+            this.buttonSpeed4 = new System.Windows.Forms.Button();
+            this.buttonSpeed3 = new System.Windows.Forms.Button();
+            this.buttonSpeed2 = new System.Windows.Forms.Button();
+            this.buttonSpeed1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.buttonHandUp = new System.Windows.Forms.Button();
+            this.buttonRobotArmClose = new System.Windows.Forms.Button();
+            this.buttonRobotArmOpen = new System.Windows.Forms.Button();
+            this.buttonLeft = new System.Windows.Forms.Button();
+            this.buttonRight = new System.Windows.Forms.Button();
+            this.buttonDown = new System.Windows.Forms.Button();
+            this.buttonUp = new System.Windows.Forms.Button();
+            this.labelSettingsPatencyGood = new System.Windows.Forms.Label();
+            this.labelSettingsPatencyMedium = new System.Windows.Forms.Label();
+            this.labelSettingsPatencyBad = new System.Windows.Forms.Label();
+            this.textBoxDirectMovementPatencyMedium = new System.Windows.Forms.TextBox();
+            this.textBoxTurnRightPatencyMedium = new System.Windows.Forms.TextBox();
+            this.textBoxTurnLeftPatencyMedium = new System.Windows.Forms.TextBox();
+            this.textBoxDirectMovementPatencyBad = new System.Windows.Forms.TextBox();
+            this.textBoxTurnRightPatencyBad = new System.Windows.Forms.TextBox();
+            this.textBoxTurnLeftPatencyBad = new System.Windows.Forms.TextBox();
             this.panelCreateEditMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfLines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfСolumns)).BeginInit();
@@ -102,6 +135,8 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTransparency)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.panelJoystick.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelCreateEditMap
@@ -401,7 +436,79 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView1.Size = new System.Drawing.Size(52, 53);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutomaticDelay = 100;
+            // 
+            // buttonSettingsSave
+            // 
+            this.buttonSettingsSave.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettingsSave.Image")));
+            this.buttonSettingsSave.Location = new System.Drawing.Point(502, 3);
+            this.buttonSettingsSave.Name = "buttonSettingsSave";
+            this.buttonSettingsSave.Size = new System.Drawing.Size(40, 40);
+            this.buttonSettingsSave.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.buttonSettingsSave, "Сохранить настройки");
+            this.buttonSettingsSave.UseVisualStyleBackColor = true;
+            this.buttonSettingsSave.Click += new System.EventHandler(this.buttonSettingsSave_Click);
+            // 
+            // buttonSettingsClose
+            // 
+            this.buttonSettingsClose.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettingsClose.Image")));
+            this.buttonSettingsClose.Location = new System.Drawing.Point(548, 3);
+            this.buttonSettingsClose.Name = "buttonSettingsClose";
+            this.buttonSettingsClose.Size = new System.Drawing.Size(40, 40);
+            this.buttonSettingsClose.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.buttonSettingsClose, "Закрыть панель настроек");
+            this.buttonSettingsClose.UseVisualStyleBackColor = true;
+            this.buttonSettingsClose.Click += new System.EventHandler(this.buttonSettingsClose_Click);
+            // 
+            // buttonSetColor
+            // 
+            this.buttonSetColor.Image = ((System.Drawing.Image)(resources.GetObject("buttonSetColor.Image")));
+            this.buttonSetColor.Location = new System.Drawing.Point(14, 31);
+            this.buttonSetColor.Name = "buttonSetColor";
+            this.buttonSetColor.Size = new System.Drawing.Size(40, 40);
+            this.buttonSetColor.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.buttonSetColor, "Определить цвет");
+            this.buttonSetColor.UseVisualStyleBackColor = true;
+            this.buttonSetColor.Click += new System.EventHandler(this.buttonSetColor_Click);
+            // 
+            // buttonCheckConnection
+            // 
+            this.buttonCheckConnection.Image = ((System.Drawing.Image)(resources.GetObject("buttonCheckConnection.Image")));
+            this.buttonCheckConnection.Location = new System.Drawing.Point(159, 86);
+            this.buttonCheckConnection.Name = "buttonCheckConnection";
+            this.buttonCheckConnection.Size = new System.Drawing.Size(40, 40);
+            this.buttonCheckConnection.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.buttonCheckConnection, "Проверить подключение к БД");
+            this.buttonCheckConnection.UseVisualStyleBackColor = true;
+            this.buttonCheckConnection.Click += new System.EventHandler(this.buttonCheckConnection_Click);
+            // 
+            // buttonSettings
+            // 
+            this.buttonSettings.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettings.Image")));
+            this.buttonSettings.Location = new System.Drawing.Point(10, 417);
+            this.buttonSettings.Name = "buttonSettings";
+            this.buttonSettings.Size = new System.Drawing.Size(40, 40);
+            this.buttonSettings.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.buttonSettings, "Настройки ");
+            this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
+            // 
+            // buttonManualControl
+            // 
+            this.buttonManualControl.Enabled = false;
+            this.buttonManualControl.Image = global::FindingWaysRobot.Properties.Resources.manualControlLock;
+            this.buttonManualControl.Location = new System.Drawing.Point(469, 9);
+            this.buttonManualControl.Name = "buttonManualControl";
+            this.buttonManualControl.Size = new System.Drawing.Size(65, 70);
+            this.buttonManualControl.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.buttonManualControl, "Ручное управление роботом");
+            this.buttonManualControl.UseVisualStyleBackColor = true;
+            this.buttonManualControl.Click += new System.EventHandler(this.buttonManualControl_Click);
             // 
             // buttonBreakConnection
             // 
@@ -417,7 +524,7 @@
             // buttonMapSelection2
             // 
             this.buttonMapSelection2.Image = global::FindingWaysRobot.Properties.Resources.choices;
-            this.buttonMapSelection2.Location = new System.Drawing.Point(469, 9);
+            this.buttonMapSelection2.Location = new System.Drawing.Point(540, 9);
             this.buttonMapSelection2.Name = "buttonMapSelection2";
             this.buttonMapSelection2.Size = new System.Drawing.Size(65, 70);
             this.buttonMapSelection2.TabIndex = 12;
@@ -538,61 +645,6 @@
             this.buttonCreateMap.UseVisualStyleBackColor = true;
             this.buttonCreateMap.Click += new System.EventHandler(this.buttonCreateMap_Click);
             // 
-            // buttonSettings
-            // 
-            this.buttonSettings.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettings.Image")));
-            this.buttonSettings.Location = new System.Drawing.Point(10, 417);
-            this.buttonSettings.Name = "buttonSettings";
-            this.buttonSettings.Size = new System.Drawing.Size(40, 40);
-            this.buttonSettings.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.buttonSettings, "Настройки ");
-            this.buttonSettings.UseVisualStyleBackColor = true;
-            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
-            // 
-            // buttonSettingsClose
-            // 
-            this.buttonSettingsClose.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettingsClose.Image")));
-            this.buttonSettingsClose.Location = new System.Drawing.Point(548, 3);
-            this.buttonSettingsClose.Name = "buttonSettingsClose";
-            this.buttonSettingsClose.Size = new System.Drawing.Size(40, 40);
-            this.buttonSettingsClose.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.buttonSettingsClose, "Закрыть панель настроек");
-            this.buttonSettingsClose.UseVisualStyleBackColor = true;
-            this.buttonSettingsClose.Click += new System.EventHandler(this.buttonSettingsClose_Click);
-            // 
-            // buttonSettingsSave
-            // 
-            this.buttonSettingsSave.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettingsSave.Image")));
-            this.buttonSettingsSave.Location = new System.Drawing.Point(502, 3);
-            this.buttonSettingsSave.Name = "buttonSettingsSave";
-            this.buttonSettingsSave.Size = new System.Drawing.Size(40, 40);
-            this.buttonSettingsSave.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.buttonSettingsSave, "Сохранить настройки");
-            this.buttonSettingsSave.UseVisualStyleBackColor = true;
-            this.buttonSettingsSave.Click += new System.EventHandler(this.buttonSettingsSave_Click);
-            // 
-            // buttonSetColor
-            // 
-            this.buttonSetColor.Image = ((System.Drawing.Image)(resources.GetObject("buttonSetColor.Image")));
-            this.buttonSetColor.Location = new System.Drawing.Point(14, 31);
-            this.buttonSetColor.Name = "buttonSetColor";
-            this.buttonSetColor.Size = new System.Drawing.Size(40, 40);
-            this.buttonSetColor.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.buttonSetColor, "Определить цвет");
-            this.buttonSetColor.UseVisualStyleBackColor = true;
-            this.buttonSetColor.Click += new System.EventHandler(this.buttonSetColor_Click);
-            // 
-            // buttonCheckConnection
-            // 
-            this.buttonCheckConnection.Image = ((System.Drawing.Image)(resources.GetObject("buttonCheckConnection.Image")));
-            this.buttonCheckConnection.Location = new System.Drawing.Point(159, 86);
-            this.buttonCheckConnection.Name = "buttonCheckConnection";
-            this.buttonCheckConnection.Size = new System.Drawing.Size(40, 40);
-            this.buttonCheckConnection.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.buttonCheckConnection, "Проверить подключение к БД");
-            this.buttonCheckConnection.UseVisualStyleBackColor = true;
-            this.buttonCheckConnection.Click += new System.EventHandler(this.buttonCheckConnection_Click);
-            // 
             // panelMapSelection
             // 
             this.panelMapSelection.Controls.Add(this.buttonLoadMapIntoRobot);
@@ -641,6 +693,7 @@
             // 
             // panelUploadRobot
             // 
+            this.panelUploadRobot.Controls.Add(this.buttonManualControl);
             this.panelUploadRobot.Controls.Add(this.buttonBreakConnection);
             this.panelUploadRobot.Controls.Add(this.buttonMapSelection2);
             this.panelUploadRobot.Controls.Add(this.buttonStop);
@@ -653,7 +706,7 @@
             this.panelUploadRobot.Controls.Add(this.ComPortNumber);
             this.panelUploadRobot.Location = new System.Drawing.Point(10, 10);
             this.panelUploadRobot.Name = "panelUploadRobot";
-            this.panelUploadRobot.Size = new System.Drawing.Size(549, 88);
+            this.panelUploadRobot.Size = new System.Drawing.Size(634, 88);
             this.panelUploadRobot.TabIndex = 4;
             this.panelUploadRobot.Visible = false;
             // 
@@ -680,7 +733,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 600;
+            this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // panelSettings
@@ -695,6 +748,9 @@
             this.panelSettings.Size = new System.Drawing.Size(591, 229);
             this.panelSettings.TabIndex = 6;
             this.panelSettings.Visible = false;
+            this.panelSettings.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelSettings_MouseDown);
+            this.panelSettings.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelSettings_MouseMove);
+            this.panelSettings.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelSettings_MouseUp);
             // 
             // labelSettings
             // 
@@ -710,8 +766,9 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tabControl1.Location = new System.Drawing.Point(3, 46);
+            this.tabControl1.Location = new System.Drawing.Point(3, 49);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(585, 176);
@@ -720,6 +777,8 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.textBoxCellSize);
+            this.tabPage1.Controls.Add(this.labelCellSize);
             this.tabPage1.Controls.Add(this.labelSetColor);
             this.tabPage1.Controls.Add(this.buttonSetColor);
             this.tabPage1.Controls.Add(this.labelTransparency);
@@ -730,6 +789,22 @@
             this.tabPage1.Size = new System.Drawing.Size(577, 148);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Цвет кнопок";
+            // 
+            // textBoxCellSize
+            // 
+            this.textBoxCellSize.Location = new System.Drawing.Point(247, 31);
+            this.textBoxCellSize.Name = "textBoxCellSize";
+            this.textBoxCellSize.Size = new System.Drawing.Size(132, 23);
+            this.textBoxCellSize.TabIndex = 5;
+            // 
+            // labelCellSize
+            // 
+            this.labelCellSize.AutoSize = true;
+            this.labelCellSize.Location = new System.Drawing.Point(244, 12);
+            this.labelCellSize.Name = "labelCellSize";
+            this.labelCellSize.Size = new System.Drawing.Size(135, 16);
+            this.labelCellSize.TabIndex = 4;
+            this.labelCellSize.Text = "Размер ячейки карты:";
             // 
             // labelSetColor
             // 
@@ -766,9 +841,9 @@
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Controls.Add(this.labelCheckConnection);
-            this.tabPage2.Controls.Add(this.buttonCheckConnection);
             this.tabPage2.Controls.Add(this.labelConnectingDatabase);
             this.tabPage2.Controls.Add(this.textBoxConnectingDatabase);
+            this.tabPage2.Controls.Add(this.buttonCheckConnection);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -801,6 +876,296 @@
             this.textBoxConnectingDatabase.Size = new System.Drawing.Size(565, 23);
             this.textBoxConnectingDatabase.TabIndex = 0;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.textBoxTurnLeftPatencyBad);
+            this.tabPage3.Controls.Add(this.textBoxTurnRightPatencyBad);
+            this.tabPage3.Controls.Add(this.textBoxDirectMovementPatencyBad);
+            this.tabPage3.Controls.Add(this.textBoxTurnLeftPatencyMedium);
+            this.tabPage3.Controls.Add(this.textBoxTurnRightPatencyMedium);
+            this.tabPage3.Controls.Add(this.textBoxDirectMovementPatencyMedium);
+            this.tabPage3.Controls.Add(this.labelSettingsPatencyBad);
+            this.tabPage3.Controls.Add(this.labelSettingsPatencyMedium);
+            this.tabPage3.Controls.Add(this.labelSettingsPatencyGood);
+            this.tabPage3.Controls.Add(this.textBoxTurnLeftPatencyGood);
+            this.tabPage3.Controls.Add(this.textBoxTurnRightPatencyGood);
+            this.tabPage3.Controls.Add(this.labelTurnLeft);
+            this.tabPage3.Controls.Add(this.labelTurnRight);
+            this.tabPage3.Controls.Add(this.textBoxDirectMovementPatencyGood);
+            this.tabPage3.Controls.Add(this.labelDirectMovement);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(577, 148);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Время движения робота";
+            // 
+            // textBoxTurnLeftPatencyGood
+            // 
+            this.textBoxTurnLeftPatencyGood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.textBoxTurnLeftPatencyGood.Location = new System.Drawing.Point(414, 30);
+            this.textBoxTurnLeftPatencyGood.Name = "textBoxTurnLeftPatencyGood";
+            this.textBoxTurnLeftPatencyGood.Size = new System.Drawing.Size(100, 23);
+            this.textBoxTurnLeftPatencyGood.TabIndex = 7;
+            // 
+            // textBoxTurnRightPatencyGood
+            // 
+            this.textBoxTurnRightPatencyGood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.textBoxTurnRightPatencyGood.Location = new System.Drawing.Point(288, 30);
+            this.textBoxTurnRightPatencyGood.Name = "textBoxTurnRightPatencyGood";
+            this.textBoxTurnRightPatencyGood.Size = new System.Drawing.Size(100, 23);
+            this.textBoxTurnRightPatencyGood.TabIndex = 6;
+            // 
+            // labelTurnLeft
+            // 
+            this.labelTurnLeft.AutoSize = true;
+            this.labelTurnLeft.Location = new System.Drawing.Point(411, 11);
+            this.labelTurnLeft.Name = "labelTurnLeft";
+            this.labelTurnLeft.Size = new System.Drawing.Size(101, 16);
+            this.labelTurnLeft.TabIndex = 5;
+            this.labelTurnLeft.Text = "Поворот налево";
+            // 
+            // labelTurnRight
+            // 
+            this.labelTurnRight.AutoSize = true;
+            this.labelTurnRight.Location = new System.Drawing.Point(285, 11);
+            this.labelTurnRight.Name = "labelTurnRight";
+            this.labelTurnRight.Size = new System.Drawing.Size(108, 16);
+            this.labelTurnRight.TabIndex = 4;
+            this.labelTurnRight.Text = "Поворот направо";
+            // 
+            // textBoxDirectMovementPatencyGood
+            // 
+            this.textBoxDirectMovementPatencyGood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.textBoxDirectMovementPatencyGood.Location = new System.Drawing.Point(162, 30);
+            this.textBoxDirectMovementPatencyGood.Name = "textBoxDirectMovementPatencyGood";
+            this.textBoxDirectMovementPatencyGood.Size = new System.Drawing.Size(100, 23);
+            this.textBoxDirectMovementPatencyGood.TabIndex = 2;
+            // 
+            // labelDirectMovement
+            // 
+            this.labelDirectMovement.AutoSize = true;
+            this.labelDirectMovement.Location = new System.Drawing.Point(159, 11);
+            this.labelDirectMovement.Name = "labelDirectMovement";
+            this.labelDirectMovement.Size = new System.Drawing.Size(108, 16);
+            this.labelDirectMovement.TabIndex = 0;
+            this.labelDirectMovement.Text = "Движение прямо";
+            // 
+            // panelJoystick
+            // 
+            this.panelJoystick.Controls.Add(this.buttonJoystickClose);
+            this.panelJoystick.Controls.Add(this.buttonSpeed4);
+            this.panelJoystick.Controls.Add(this.buttonSpeed3);
+            this.panelJoystick.Controls.Add(this.buttonSpeed2);
+            this.panelJoystick.Controls.Add(this.buttonSpeed1);
+            this.panelJoystick.Controls.Add(this.button2);
+            this.panelJoystick.Controls.Add(this.buttonHandUp);
+            this.panelJoystick.Controls.Add(this.buttonRobotArmClose);
+            this.panelJoystick.Controls.Add(this.buttonRobotArmOpen);
+            this.panelJoystick.Controls.Add(this.buttonLeft);
+            this.panelJoystick.Controls.Add(this.buttonRight);
+            this.panelJoystick.Controls.Add(this.buttonDown);
+            this.panelJoystick.Controls.Add(this.buttonUp);
+            this.panelJoystick.Location = new System.Drawing.Point(256, 407);
+            this.panelJoystick.Name = "panelJoystick";
+            this.panelJoystick.Size = new System.Drawing.Size(605, 261);
+            this.panelJoystick.TabIndex = 7;
+            this.panelJoystick.Visible = false;
+            // 
+            // buttonJoystickClose
+            // 
+            this.buttonJoystickClose.Image = ((System.Drawing.Image)(resources.GetObject("buttonJoystickClose.Image")));
+            this.buttonJoystickClose.Location = new System.Drawing.Point(557, 13);
+            this.buttonJoystickClose.Name = "buttonJoystickClose";
+            this.buttonJoystickClose.Size = new System.Drawing.Size(40, 40);
+            this.buttonJoystickClose.TabIndex = 12;
+            this.buttonJoystickClose.UseVisualStyleBackColor = true;
+            this.buttonJoystickClose.Click += new System.EventHandler(this.buttonJoystickClose_Click);
+            // 
+            // buttonSpeed4
+            // 
+            this.buttonSpeed4.Image = ((System.Drawing.Image)(resources.GetObject("buttonSpeed4.Image")));
+            this.buttonSpeed4.Location = new System.Drawing.Point(419, 13);
+            this.buttonSpeed4.Name = "buttonSpeed4";
+            this.buttonSpeed4.Size = new System.Drawing.Size(40, 40);
+            this.buttonSpeed4.TabIndex = 11;
+            this.buttonSpeed4.UseVisualStyleBackColor = true;
+            // 
+            // buttonSpeed3
+            // 
+            this.buttonSpeed3.Image = ((System.Drawing.Image)(resources.GetObject("buttonSpeed3.Image")));
+            this.buttonSpeed3.Location = new System.Drawing.Point(373, 13);
+            this.buttonSpeed3.Name = "buttonSpeed3";
+            this.buttonSpeed3.Size = new System.Drawing.Size(40, 40);
+            this.buttonSpeed3.TabIndex = 10;
+            this.buttonSpeed3.UseVisualStyleBackColor = true;
+            // 
+            // buttonSpeed2
+            // 
+            this.buttonSpeed2.Image = ((System.Drawing.Image)(resources.GetObject("buttonSpeed2.Image")));
+            this.buttonSpeed2.Location = new System.Drawing.Point(327, 13);
+            this.buttonSpeed2.Name = "buttonSpeed2";
+            this.buttonSpeed2.Size = new System.Drawing.Size(40, 40);
+            this.buttonSpeed2.TabIndex = 9;
+            this.buttonSpeed2.UseVisualStyleBackColor = true;
+            // 
+            // buttonSpeed1
+            // 
+            this.buttonSpeed1.Image = ((System.Drawing.Image)(resources.GetObject("buttonSpeed1.Image")));
+            this.buttonSpeed1.Location = new System.Drawing.Point(281, 13);
+            this.buttonSpeed1.Name = "buttonSpeed1";
+            this.buttonSpeed1.Size = new System.Drawing.Size(40, 40);
+            this.buttonSpeed1.TabIndex = 8;
+            this.buttonSpeed1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(394, 172);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(65, 70);
+            this.button2.TabIndex = 7;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // buttonHandUp
+            // 
+            this.buttonHandUp.Image = ((System.Drawing.Image)(resources.GetObject("buttonHandUp.Image")));
+            this.buttonHandUp.Location = new System.Drawing.Point(394, 91);
+            this.buttonHandUp.Name = "buttonHandUp";
+            this.buttonHandUp.Size = new System.Drawing.Size(65, 70);
+            this.buttonHandUp.TabIndex = 6;
+            this.buttonHandUp.UseVisualStyleBackColor = true;
+            // 
+            // buttonRobotArmClose
+            // 
+            this.buttonRobotArmClose.Image = ((System.Drawing.Image)(resources.GetObject("buttonRobotArmClose.Image")));
+            this.buttonRobotArmClose.Location = new System.Drawing.Point(294, 172);
+            this.buttonRobotArmClose.Name = "buttonRobotArmClose";
+            this.buttonRobotArmClose.Size = new System.Drawing.Size(65, 70);
+            this.buttonRobotArmClose.TabIndex = 5;
+            this.buttonRobotArmClose.UseVisualStyleBackColor = true;
+            // 
+            // buttonRobotArmOpen
+            // 
+            this.buttonRobotArmOpen.Image = ((System.Drawing.Image)(resources.GetObject("buttonRobotArmOpen.Image")));
+            this.buttonRobotArmOpen.Location = new System.Drawing.Point(294, 91);
+            this.buttonRobotArmOpen.Name = "buttonRobotArmOpen";
+            this.buttonRobotArmOpen.Size = new System.Drawing.Size(65, 70);
+            this.buttonRobotArmOpen.TabIndex = 4;
+            this.buttonRobotArmOpen.UseVisualStyleBackColor = true;
+            // 
+            // buttonLeft
+            // 
+            this.buttonLeft.Image = ((System.Drawing.Image)(resources.GetObject("buttonLeft.Image")));
+            this.buttonLeft.Location = new System.Drawing.Point(16, 105);
+            this.buttonLeft.Name = "buttonLeft";
+            this.buttonLeft.Size = new System.Drawing.Size(65, 70);
+            this.buttonLeft.TabIndex = 3;
+            this.buttonLeft.UseVisualStyleBackColor = true;
+            // 
+            // buttonRight
+            // 
+            this.buttonRight.Image = ((System.Drawing.Image)(resources.GetObject("buttonRight.Image")));
+            this.buttonRight.Location = new System.Drawing.Point(145, 105);
+            this.buttonRight.Name = "buttonRight";
+            this.buttonRight.Size = new System.Drawing.Size(65, 70);
+            this.buttonRight.TabIndex = 2;
+            this.buttonRight.UseVisualStyleBackColor = true;
+            // 
+            // buttonDown
+            // 
+            this.buttonDown.Image = ((System.Drawing.Image)(resources.GetObject("buttonDown.Image")));
+            this.buttonDown.Location = new System.Drawing.Point(81, 172);
+            this.buttonDown.Name = "buttonDown";
+            this.buttonDown.Size = new System.Drawing.Size(65, 70);
+            this.buttonDown.TabIndex = 1;
+            this.buttonDown.UseVisualStyleBackColor = true;
+            // 
+            // buttonUp
+            // 
+            this.buttonUp.Image = ((System.Drawing.Image)(resources.GetObject("buttonUp.Image")));
+            this.buttonUp.Location = new System.Drawing.Point(81, 36);
+            this.buttonUp.Name = "buttonUp";
+            this.buttonUp.Size = new System.Drawing.Size(65, 70);
+            this.buttonUp.TabIndex = 0;
+            this.buttonUp.UseVisualStyleBackColor = true;
+            // 
+            // labelSettingsPatencyGood
+            // 
+            this.labelSettingsPatencyGood.AutoSize = true;
+            this.labelSettingsPatencyGood.Location = new System.Drawing.Point(6, 30);
+            this.labelSettingsPatencyGood.Name = "labelSettingsPatencyGood";
+            this.labelSettingsPatencyGood.Size = new System.Drawing.Size(150, 16);
+            this.labelSettingsPatencyGood.TabIndex = 8;
+            this.labelSettingsPatencyGood.Text = "Хорошая проходимость:";
+            // 
+            // labelSettingsPatencyMedium
+            // 
+            this.labelSettingsPatencyMedium.AutoSize = true;
+            this.labelSettingsPatencyMedium.Location = new System.Drawing.Point(11, 65);
+            this.labelSettingsPatencyMedium.Name = "labelSettingsPatencyMedium";
+            this.labelSettingsPatencyMedium.Size = new System.Drawing.Size(145, 16);
+            this.labelSettingsPatencyMedium.TabIndex = 9;
+            this.labelSettingsPatencyMedium.Text = "Средняя проходимость:";
+            // 
+            // labelSettingsPatencyBad
+            // 
+            this.labelSettingsPatencyBad.AutoSize = true;
+            this.labelSettingsPatencyBad.Location = new System.Drawing.Point(17, 96);
+            this.labelSettingsPatencyBad.Name = "labelSettingsPatencyBad";
+            this.labelSettingsPatencyBad.Size = new System.Drawing.Size(139, 16);
+            this.labelSettingsPatencyBad.TabIndex = 10;
+            this.labelSettingsPatencyBad.Text = "Плохая проходимость:";
+            // 
+            // textBoxDirectMovementPatencyMedium
+            // 
+            this.textBoxDirectMovementPatencyMedium.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(160)))));
+            this.textBoxDirectMovementPatencyMedium.Location = new System.Drawing.Point(162, 59);
+            this.textBoxDirectMovementPatencyMedium.Name = "textBoxDirectMovementPatencyMedium";
+            this.textBoxDirectMovementPatencyMedium.Size = new System.Drawing.Size(100, 23);
+            this.textBoxDirectMovementPatencyMedium.TabIndex = 11;
+            // 
+            // textBoxTurnRightPatencyMedium
+            // 
+            this.textBoxTurnRightPatencyMedium.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(160)))));
+            this.textBoxTurnRightPatencyMedium.Location = new System.Drawing.Point(288, 62);
+            this.textBoxTurnRightPatencyMedium.Name = "textBoxTurnRightPatencyMedium";
+            this.textBoxTurnRightPatencyMedium.Size = new System.Drawing.Size(100, 23);
+            this.textBoxTurnRightPatencyMedium.TabIndex = 12;
+            // 
+            // textBoxTurnLeftPatencyMedium
+            // 
+            this.textBoxTurnLeftPatencyMedium.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(160)))));
+            this.textBoxTurnLeftPatencyMedium.Location = new System.Drawing.Point(414, 62);
+            this.textBoxTurnLeftPatencyMedium.Name = "textBoxTurnLeftPatencyMedium";
+            this.textBoxTurnLeftPatencyMedium.Size = new System.Drawing.Size(100, 23);
+            this.textBoxTurnLeftPatencyMedium.TabIndex = 13;
+            // 
+            // textBoxDirectMovementPatencyBad
+            // 
+            this.textBoxDirectMovementPatencyBad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.textBoxDirectMovementPatencyBad.Location = new System.Drawing.Point(162, 93);
+            this.textBoxDirectMovementPatencyBad.Name = "textBoxDirectMovementPatencyBad";
+            this.textBoxDirectMovementPatencyBad.Size = new System.Drawing.Size(100, 23);
+            this.textBoxDirectMovementPatencyBad.TabIndex = 14;
+            // 
+            // textBoxTurnRightPatencyBad
+            // 
+            this.textBoxTurnRightPatencyBad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.textBoxTurnRightPatencyBad.Location = new System.Drawing.Point(288, 96);
+            this.textBoxTurnRightPatencyBad.Name = "textBoxTurnRightPatencyBad";
+            this.textBoxTurnRightPatencyBad.Size = new System.Drawing.Size(100, 23);
+            this.textBoxTurnRightPatencyBad.TabIndex = 15;
+            // 
+            // textBoxTurnLeftPatencyBad
+            // 
+            this.textBoxTurnLeftPatencyBad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.textBoxTurnLeftPatencyBad.Location = new System.Drawing.Point(414, 96);
+            this.textBoxTurnLeftPatencyBad.Name = "textBoxTurnLeftPatencyBad";
+            this.textBoxTurnLeftPatencyBad.Size = new System.Drawing.Size(100, 23);
+            this.textBoxTurnLeftPatencyBad.TabIndex = 16;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -813,12 +1178,13 @@
             this.Controls.Add(this.panelUploadRobot);
             this.Controls.Add(this.statusBar);
             this.Controls.Add(this.panelMapSelection);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panelCreateEditMap);
+            this.Controls.Add(this.panelJoystick);
+            this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Finding ways robot";
+            this.Text = "Интеллектуальная система поиска пути на карте местности для мобильного робота";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelCreateEditMap.ResumeLayout(false);
             this.panelCreateEditMap.PerformLayout();
@@ -837,6 +1203,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTransparency)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.panelJoystick.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -904,6 +1273,39 @@
         private System.Windows.Forms.TextBox textBoxConnectingDatabase;
         private System.Windows.Forms.Label labelCheckConnection;
         private System.Windows.Forms.Button buttonCheckConnection;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label labelDirectMovement;
+        private System.Windows.Forms.Label labelTurnLeft;
+        private System.Windows.Forms.Label labelTurnRight;
+        private System.Windows.Forms.TextBox textBoxDirectMovementPatencyGood;
+        private System.Windows.Forms.TextBox textBoxTurnLeftPatencyGood;
+        private System.Windows.Forms.TextBox textBoxTurnRightPatencyGood;
+        private System.Windows.Forms.Button buttonManualControl;
+        private System.Windows.Forms.Panel panelJoystick;
+        private System.Windows.Forms.Button buttonUp;
+        private System.Windows.Forms.Button buttonDown;
+        private System.Windows.Forms.Button buttonLeft;
+        private System.Windows.Forms.Button buttonRight;
+        private System.Windows.Forms.Button buttonRobotArmClose;
+        private System.Windows.Forms.Button buttonRobotArmOpen;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonHandUp;
+        private System.Windows.Forms.Button buttonSpeed1;
+        private System.Windows.Forms.Button buttonSpeed4;
+        private System.Windows.Forms.Button buttonSpeed3;
+        private System.Windows.Forms.Button buttonSpeed2;
+        private System.Windows.Forms.Button buttonJoystickClose;
+        private System.Windows.Forms.Label labelCellSize;
+        private System.Windows.Forms.TextBox textBoxCellSize;
+        private System.Windows.Forms.Label labelSettingsPatencyGood;
+        private System.Windows.Forms.TextBox textBoxTurnLeftPatencyBad;
+        private System.Windows.Forms.TextBox textBoxTurnRightPatencyBad;
+        private System.Windows.Forms.TextBox textBoxDirectMovementPatencyBad;
+        private System.Windows.Forms.TextBox textBoxTurnLeftPatencyMedium;
+        private System.Windows.Forms.TextBox textBoxTurnRightPatencyMedium;
+        private System.Windows.Forms.TextBox textBoxDirectMovementPatencyMedium;
+        private System.Windows.Forms.Label labelSettingsPatencyBad;
+        private System.Windows.Forms.Label labelSettingsPatencyMedium;
     }
 }
 

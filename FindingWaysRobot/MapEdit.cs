@@ -14,9 +14,9 @@ namespace FindingWaysRobot
         public static bool installFinish = false; //Установлен ли финиш
         public  byte RobotPosition = 2; //Позиция робота, использовать после searchRobotInstall
 
-        public const string PatencyGood = "1";
-        public const string PatencyMedium = "5";
-        public const string PatencyBad = "15";
+        public static string PatencyGood = Convert.ToString(Properties.Settings.Default.directMovement);
+        public static string PatencyMedium = Convert.ToString(Properties.Settings.Default.directMovement2);
+        public static string PatencyBad = Convert.ToString(Properties.Settings.Default.directMovement3);
 
 
 
